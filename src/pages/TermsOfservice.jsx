@@ -211,8 +211,8 @@ export default function TermsOfService() {
 
         {/* Footer nav */}
         <div className="mt-16 flex flex-wrap gap-4 border-t border-black/10 pt-8 text-sm text-black/45">
-          <Link to="/legal/privacy-policy" className="hover:text-black transition">Privacy Policy</Link>
-          <Link to="/legal/terms-of-service" className="hover:text-black transition">Terms of Service</Link>
+          <Link to="/privacy-policy" className="hover:text-black transition">Privacy Policy</Link>
+          <Link to="/terms-of-service" className="hover:text-black transition">Terms of Service</Link>
           <Link to="/" className="hover:text-black transition">← Back to Home</Link>
         </div>
 

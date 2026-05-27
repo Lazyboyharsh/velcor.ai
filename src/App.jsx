@@ -10,15 +10,15 @@ import Pricing from "./pages/Pricing";
 import Blog from "./pages/Blog";
 import Process from "./pages/Process";
 import NotFound from "./pages/NotFound";
-import PrivacyPolicy  from "./pages/PrivacyPolicy";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import Infrastructure from "./pages/Infrastructure";
-
 
 export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<ServicesPage />} />
@@ -29,11 +29,11 @@ export default function App() {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<Blog />} />
-       <Route path="/process" element={<Process />} />
+        <Route path="/process" element={<Process />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/infrastructure" element={<Infrastructure />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/legal/privacy-policy"   element={<PrivacyPolicy />} />
-<Route path="/legal/terms-of-service" element={<TermsOfService />} />
-<Route path="/infrastructure" element={<Infrastructure />} />
       </Routes>
     </BrowserRouter>
   );

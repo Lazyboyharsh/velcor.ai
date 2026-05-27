@@ -79,8 +79,8 @@ export default function Footer() {
         <div className="mt-12 flex flex-col gap-3 border-t border-black/10 pt-6 text-xs text-black/45 md:flex-row md:items-center md:justify-between">
           <p>© 2026 Velcor.ai. All rights reserved.</p>
           <div className="flex gap-5">
-            <Link to="/legal/privacy-policy">Privacy Policy</Link>
-<Link to="/legal/terms-of-service">Terms of Service</Link>
+            <Link to="/privacy-policy">Privacy Policy</Link>
+<Link to="/terms-of-service">Terms of Service</Link>
           </div>
           <p>Built for B2B teams that want systems, not guesswork.</p>
         </div>
