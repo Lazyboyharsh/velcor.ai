@@ -1,4 +1,4 @@
-import {
+  import {
   ArrowRight,
   Sparkles,
   X,
@@ -22,23 +22,69 @@ export default function BookingPopup() {
 
   const [loading, setLoading] = useState(false);
 
+  // =========================================
+  // COUNTRY CODE
+  // =========================================
   const [countryCode, setCountryCode] =
-    useState("+91");
+    useState("+1");
 
+  // =========================================
+  // SELECTED SLOT
+  // =========================================
   const [selectedTime, setSelectedTime] =
-    useState("11:00 AM");
+    useState("");
 
   const [selectedDate, setSelectedDate] =
     useState("");
 
+  // =========================================
+  // TIMER
+  // =========================================
   const [timeLeft, setTimeLeft] = useState(
     32 * 60 + 30
   );
 
+  // =========================================
+  // FORM DATA
+  // =========================================
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     mobile: "",
+  });
+
+  // =========================================
+  // USER TIMEZONE
+  // =========================================
+  const userTimeZone =
+    Intl.DateTimeFormat().resolvedOptions()
+      .timeZone;
+
+  // =========================================
+  // UTC BASE SLOTS
+  // =========================================
+  const baseSlots = [
+    "2026-01-01T15:00:00Z",
+    "2026-01-01T16:00:00Z",
+    "2026-01-01T17:30:00Z",
+    "2026-01-01T19:00:00Z",
+    "2026-01-01T20:30:00Z",
+    "2026-01-01T22:00:00Z",
+  ];
+
+  // =========================================
+  // AUTO LOCAL TIME SLOTS
+  // =========================================
+  const timeSlots = baseSlots.map((slot) => {
+    return new Date(slot).toLocaleTimeString(
+      [],
+      {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+        timeZone: userTimeZone,
+      }
+    );
   });
 
   // =========================================
@@ -53,6 +99,15 @@ export default function BookingPopup() {
   }, []);
 
   // =========================================
+  // DEFAULT SLOT
+  // =========================================
+  useEffect(() => {
+    if (timeSlots.length > 0) {
+      setSelectedTime(timeSlots[0]);
+    }
+  }, []);
+
+  // =========================================
   // AUTO COUNTRY DETECT
   // =========================================
   useEffect(() => {
@@ -60,7 +115,7 @@ export default function BookingPopup() {
       .then((res) => res.json())
       .then((data) => {
         setCountryCode(
-          data.country_calling_code || "+91"
+          data.country_calling_code || "+1"
         );
       })
       .catch(() => {
@@ -136,19 +191,7 @@ export default function BookingPopup() {
   );
 
   // =========================================
-  // TIME SLOTS
-  // =========================================
-  const timeSlots = [
-    "10:00 AM",
-    "11:00 AM",
-    "12:30 PM",
-    "02:00 PM",
-    "03:30 PM",
-    "05:00 PM",
-  ];
-
-  // =========================================
-  // FORM CHANGE
+  // INPUT CHANGE
   // =========================================
   const handleChange = (e) => {
     setFormData({
@@ -168,12 +211,10 @@ export default function BookingPopup() {
 
     const formDataToSend = new FormData();
 
-    // =========================================
     // WEB3FORMS
-    // =========================================
     formDataToSend.append(
       "access_key",
-      "c70b2c7c-44d8-adc5-dcfcef157e6f"
+      "c70b2c7c-243d-44d8-adc5-dcfcef157e6f"
     );
 
     formDataToSend.append(
@@ -186,10 +227,11 @@ export default function BookingPopup() {
       "Velcor.ai Popup"
     );
 
-    // =========================================
     // USER DATA
-    // =========================================
-    formDataToSend.append("name", formData.name);
+    formDataToSend.append(
+      "name",
+      formData.name
+    );
 
     formDataToSend.append(
       "email",
@@ -211,6 +253,16 @@ export default function BookingPopup() {
       selectedTime
     );
 
+    formDataToSend.append(
+      "timezone",
+      userTimeZone
+    );
+
+    formDataToSend.append(
+      "local_booking_time",
+      `${selectedDate} - ${selectedTime}`
+    );
+
     formDataToSend.append("botcheck", "");
 
     try {
@@ -226,9 +278,85 @@ export default function BookingPopup() {
       const data = await response.json();
 
       if (data.success) {
-        alert(
-          "🎉 Strategy Session Scheduled Successfully!\n\nVelcor.ai team will contact you shortly."
-        );
+        const successBox =
+          document.createElement("div");
+
+        successBox.innerHTML = `
+          <div style="
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 99999;
+            background: #111111;
+            color: white;
+            padding: 18px 20px;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+            min-width: 320px;
+            font-family: sans-serif;
+            animation: slideIn .4s ease;
+          ">
+            <div style="
+              display:flex;
+              align-items:flex-start;
+              gap:14px;
+            ">
+              
+              <div style="
+                width:44px;
+                height:44px;
+                border-radius:14px;
+                background:#3b82f6;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-size:20px;
+              ">
+                ✅
+              </div>
+
+              <div>
+                <h3 style="
+                  margin:0;
+                  font-size:16px;
+                  font-weight:700;
+                ">
+                  Strategy Call Booked
+                </h3>
+
+                <p style="
+                  margin:6px 0 0;
+                  font-size:13px;
+                  line-height:1.6;
+                  color:rgba(255,255,255,0.65);
+                ">
+                  Velcor.ai team will contact you shortly.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <style>
+            @keyframes slideIn {
+              from {
+                opacity:0;
+                transform:translateY(-20px);
+              }
+
+              to {
+                opacity:1;
+                transform:translateY(0);
+              }
+            }
+          </style>
+        `;
+
+        document.body.appendChild(successBox);
+
+        setTimeout(() => {
+          successBox.remove();
+        }, 4000);
 
         setFormData({
           name: "",
@@ -251,13 +379,16 @@ export default function BookingPopup() {
     }
   };
 
+  // =========================================
+  // DON'T SHOW UNTIL READY
+  // =========================================
   if (!show) return null;
 
   return (
     <>
-      {/* MAIN SHORT POPUP */}
+      {/* MAIN POPUP */}
       <div className="fixed bottom-4 right-4 z-[9999] w-[370px] max-w-[calc(100%-32px)] animate-[popupFade_0.5s_ease] sm:bottom-6 sm:right-6">
-        
+          
         <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-black p-6 text-white shadow-[0_25px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl">
           
           {/* GLOW */}
@@ -374,7 +505,7 @@ export default function BookingPopup() {
         </div>
       </div>
 
-      {/* FORM MODAL */}
+      {/* MODAL */}
       {openForm && (
         <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/70 p-3 backdrop-blur-md sm:p-4">
           
@@ -410,7 +541,7 @@ export default function BookingPopup() {
               </div>
             </div>
 
-            {/* SELECT DATE */}
+            {/* DATE */}
             <div className="mt-6">
               
               <div className="mb-3 flex items-center gap-2 text-sm font-medium text-white/70">
@@ -543,7 +674,7 @@ export default function BookingPopup() {
                 <div className="relative">
                   <Globe2
                     size={18}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-400"
+                    className="absolute left-4 top-1/2 z-10 -translate-y-1/2 text-blue-400"
                   />
 
                   <select
@@ -553,36 +684,40 @@ export default function BookingPopup() {
                         e.target.value
                       )
                     }
-                    className="w-full appearance-none rounded-2xl border border-white/10 bg-white/5 py-4 pl-11 pr-4 text-sm outline-none transition focus:border-blue-400"
+                    className="w-full appearance-none rounded-2xl border border-white/10 bg-[#111111] py-4 pl-11 pr-8 text-sm text-white outline-none transition focus:border-blue-400"
                   >
                     <option value="+1">
-                      🇺🇸 +1
-                    </option>
-
-                    <option value="+44">
-                      🇬🇧 +44
+                      🇺🇸 US +1
                     </option>
 
                     <option value="+91">
-                      🇮🇳 +91
+                      🇮🇳 IN +91
+                    </option>
+
+                    <option value="+44">
+                      🇬🇧 UK +44
                     </option>
 
                     <option value="+971">
-                      🇦🇪 +971
+                      🇦🇪 UAE +971
                     </option>
 
                     <option value="+61">
-                      🇦🇺 +61
+                      🇦🇺 AU +61
                     </option>
 
                     <option value="+65">
-                      🇸🇬 +65
+                      🇸🇬 SG +65
                     </option>
 
                     <option value="+81">
-                      🇯🇵 +81
+                      🇯🇵 JP +81
                     </option>
                   </select>
+
+                  <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white/40">
+                    ▼
+                  </div>
                 </div>
 
                 {/* MOBILE */}

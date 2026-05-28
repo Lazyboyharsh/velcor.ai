@@ -25,9 +25,18 @@ export default function PilotCTA() {
   ];
 
   // ==================================================
+  // USER TIMEZONE
+  // ==================================================
+  const userTimeZone =
+    Intl.DateTimeFormat().resolvedOptions()
+      .timeZone;
+
+  // ==================================================
   // TIMER
   // ==================================================
-  const [timeLeft, setTimeLeft] = useState(32 * 60 + 30);
+  const [timeLeft, setTimeLeft] = useState(
+    32 * 60 + 30
+  );
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -41,9 +50,14 @@ export default function PilotCTA() {
     return () => clearInterval(timer);
   }, []);
 
-  const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0");
+  const minutes = String(
+    Math.floor(timeLeft / 60)
+  ).padStart(2, "0");
 
-  const seconds = String(timeLeft % 60).padStart(2, "0");
+  const seconds = String(timeLeft % 60).padStart(
+    2,
+    "0"
+  );
 
   // ==================================================
   // AUTO FUTURE DATES
@@ -63,11 +77,12 @@ export default function PilotCTA() {
 
         dayNumber: date.getDate(),
 
-        fullDate: date.toLocaleDateString("en-US", {
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        }),
+        fullDate:
+          date.toLocaleDateString("en-US", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          }),
       });
     }
 
@@ -77,23 +92,25 @@ export default function PilotCTA() {
   // ==================================================
   // STATES
   // ==================================================
-  const [selectedDate, setSelectedDate] = useState(
-    upcomingDates[0]
-  );
+  const [selectedDate, setSelectedDate] =
+    useState(upcomingDates[0]);
 
-  const [selectedTime, setSelectedTime] = useState("11:00 AM");
+  const [selectedTime, setSelectedTime] =
+    useState("");
 
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] =
+    useState(false);
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] =
+    useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     mobile: "",
     company: "",
-    countryCode: "+91",
-    country: "India",
+    countryCode: "+1",
+    country: "United States",
   });
 
   // ==================================================
@@ -106,10 +123,12 @@ export default function PilotCTA() {
         setFormData((prev) => ({
           ...prev,
 
-          country: data.country_name || "India",
+          country:
+            data.country_name ||
+            "United States",
 
           countryCode:
-            data.country_calling_code || "+91",
+            data.country_calling_code || "+1",
         }));
       })
       .catch(() => {
@@ -118,16 +137,40 @@ export default function PilotCTA() {
   }, []);
 
   // ==================================================
-  // TIME SLOTS
+  // UTC BASE SLOTS
   // ==================================================
-  const timeSlots = [
-    "10:00 AM",
-    "11:00 AM",
-    "12:30 PM",
-    "02:00 PM",
-    "03:30 PM",
-    "05:00 PM",
+  const baseSlots = [
+    "2026-01-01T15:00:00Z",
+    "2026-01-01T16:00:00Z",
+    "2026-01-01T17:30:00Z",
+    "2026-01-01T19:00:00Z",
+    "2026-01-01T20:30:00Z",
+    "2026-01-01T22:00:00Z",
   ];
+
+  // ==================================================
+  // AUTO LOCAL TIME CONVERSION
+  // ==================================================
+  const timeSlots = baseSlots.map((slot) => {
+    return new Date(slot).toLocaleTimeString(
+      [],
+      {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+        timeZone: userTimeZone,
+      }
+    );
+  });
+
+  // ==================================================
+  // DEFAULT SLOT
+  // ==================================================
+  useEffect(() => {
+    if (timeSlots.length > 0) {
+      setSelectedTime(timeSlots[0]);
+    }
+  }, []);
 
   // ==================================================
   // FORM CHANGE
@@ -141,6 +184,91 @@ export default function PilotCTA() {
   };
 
   // ==================================================
+  // SUCCESS TOAST
+  // ==================================================
+  const showSuccessToast = () => {
+    const successBox =
+      document.createElement("div");
+
+    successBox.innerHTML = `
+      <div style="
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        z-index: 99999;
+        background: #111111;
+        color: white;
+        padding: 18px 20px;
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.08);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+        min-width: 320px;
+        font-family: sans-serif;
+        animation: slideIn .4s ease;
+      ">
+        <div style="
+          display:flex;
+          align-items:flex-start;
+          gap:14px;
+        ">
+          
+          <div style="
+            width:44px;
+            height:44px;
+            border-radius:14px;
+            background:#3b82f6;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:20px;
+          ">
+            ✅
+          </div>
+
+          <div>
+            <h3 style="
+              margin:0;
+              font-size:16px;
+              font-weight:700;
+            ">
+              Strategy Session Scheduled
+            </h3>
+
+            <p style="
+              margin:6px 0 0;
+              font-size:13px;
+              line-height:1.6;
+              color:rgba(255,255,255,0.65);
+            ">
+              Velcor.ai team will contact you shortly.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <style>
+        @keyframes slideIn {
+          from {
+            opacity:0;
+            transform:translateY(-20px);
+          }
+
+          to {
+            opacity:1;
+            transform:translateY(0);
+          }
+        }
+      </style>
+    `;
+
+    document.body.appendChild(successBox);
+
+    setTimeout(() => {
+      successBox.remove();
+    }, 4000);
+  };
+
+  // ==================================================
   // SUBMIT WITH WEB3FORMS
   // ==================================================
   const handleSubmit = async (e) => {
@@ -150,9 +278,6 @@ export default function PilotCTA() {
 
     const formDataToSend = new FormData();
 
-    // =========================================
-    // WEB3FORMS
-    // =========================================
     formDataToSend.append(
       "access_key",
       "c70b2c7c-243d-44d8-adc5-dcfcef157e6f"
@@ -168,19 +293,26 @@ export default function PilotCTA() {
       "Velcor.ai Website"
     );
 
-    // =========================================
     // USER DATA
-    // =========================================
-    formDataToSend.append("name", formData.name);
+    formDataToSend.append(
+      "name",
+      formData.name
+    );
 
-    formDataToSend.append("email", formData.email);
+    formDataToSend.append(
+      "email",
+      formData.email
+    );
 
     formDataToSend.append(
       "mobile",
       `${formData.countryCode} ${formData.mobile}`
     );
 
-    formDataToSend.append("company", formData.company);
+    formDataToSend.append(
+      "company",
+      formData.company
+    );
 
     formDataToSend.append(
       "country",
@@ -197,9 +329,16 @@ export default function PilotCTA() {
       selectedTime
     );
 
-    // =========================================
-    // SPAM PROTECTION
-    // =========================================
+    formDataToSend.append(
+      "timezone",
+      userTimeZone
+    );
+
+    formDataToSend.append(
+      "local_booking_time",
+      `${selectedDate.fullDate} - ${selectedTime}`
+    );
+
     formDataToSend.append("botcheck", "");
 
     try {
@@ -215,11 +354,8 @@ export default function PilotCTA() {
       const data = await response.json();
 
       if (data.success) {
-        alert(
-          "🎉 Strategy Session Scheduled Successfully!\n\nOur Velcor.ai team will contact you shortly."
-        );
+        showSuccessToast();
 
-        // RESET
         setFormData((prev) => ({
           ...prev,
 
@@ -229,13 +365,11 @@ export default function PilotCTA() {
           company: "",
         }));
 
-        // CLOSE MODAL
         setOpenModal(false);
       } else {
-        console.log(data);
-
         alert(
-          data.message || "Failed to send booking"
+          data.message ||
+            "Failed to send booking"
         );
       }
     } catch (error) {
@@ -246,7 +380,7 @@ export default function PilotCTA() {
       setLoading(false);
     }
   };
-
+  
   return (
     <>
       <section
