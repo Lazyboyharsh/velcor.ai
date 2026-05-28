@@ -1,108 +1,190 @@
 import Navbar from "../components/Navbar";
 import Footer from "../sections/Footer";
-import { ArrowRight, Check, Users, Target, Zap, BarChart3, Brain, Shield } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  Target,
+  Zap,
+  Brain,
+  Shield,
+  Workflow,
+  Database,
+  Sparkles,
+  BarChart3,
+  Globe,
+  Cpu,
+} from "lucide-react";
 
 export default function About() {
   const values = [
-    { icon: Target, title: "Systems over random campaigns", desc: "We build repeatable infrastructure, not one-off tactics." },
-    { icon: Brain, title: "AI workflows with human strategy", desc: "Technology amplifies great thinking; it never replaces it." },
-    { icon: BarChart3, title: "Pipeline quality over vanity metrics", desc: "We measure success in qualified meetings, not opens." },
-    { icon: Shield, title: "CRM clarity and clean execution", desc: "Clean data, clean pipeline, clean handoffs to sales." },
+    {
+      icon: Workflow,
+      title: "Revenue Infrastructure",
+      desc: "We build connected systems that unify outbound, CRM, analytics, automation, and AI workflows into one scalable operational engine.",
+    },
+    {
+      icon: Brain,
+      title: "AI-Powered Execution",
+      desc: "Our AI systems automate repetitive tasks, improve lead quality, and accelerate operational efficiency across the revenue lifecycle.",
+    },
+    {
+      icon: Database,
+      title: "CRM & RevOps Optimization",
+      desc: "We optimize CRM architecture, data systems, reporting, and operational workflows for scalable revenue growth.",
+    },
+    {
+      icon: Shield,
+      title: "Scalable Growth Systems",
+      desc: "Clean systems, structured data, and intelligent automation create predictable pipeline generation and operational clarity.",
+    },
   ];
 
-  const team = [
-    { name: "Alex Rivera", role: "Founder & GTM Strategist", specialty: "Outbound Systems" },
-    { name: "Maya Chen", role: "Head of RevOps", specialty: "CRM Architecture" },
-    { name: "Jordan Lee", role: "AI Workflow Engineer", specialty: "Automation & AI" },
-    { name: "Sam Patel", role: "Content & ABM Lead", specialty: "Content Systems" },
-  ];
-
-  const milestones = [
-    { year: "2022", event: "Founded with a mission to build AI-native GTM for B2B" },
-    { year: "2023", event: "Helped 12 SaaS companies build their first outbound system" },
-    { year: "2024", event: "Launched AI personalization and CRM automation suite" },
-    { year: "2025", event: "Expanded to RevOps and multi-channel GTM orchestration" },
-    { year: "2026", event: "Serving 40+ B2B tech companies across 8 countries" },
+  const services = [
+    "Sales Process Automation",
+    "AI-Powered Lead Nurturing & Scoring",
+    "CRM Architecture & Optimization",
+    "Revenue Operations Systems",
+    "Pipeline Growth Strategy",
+    "Analytics & Performance Tracking",
+    "Workflow & Outreach Automation",
+    "AI Infrastructure & Automation",
   ];
 
   return (
-    <main className="min-h-screen bg-[#f6f1e8] text-black">
+    <main className="min-h-screen overflow-hidden bg-[#f6f1e8] text-black">
       <Navbar />
 
       <style>{`
         @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(24px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(24px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
+
+        .fade-up {
+          animation: fadeUp 0.8s ease forwards;
         }
-        .fade-up { animation: fadeUp 0.7s ease forwards; }
-        .fade-delay-1 { animation: fadeUp 0.7s 0.1s ease forwards; opacity: 0; }
-        .fade-delay-2 { animation: fadeUp 0.7s 0.2s ease forwards; opacity: 0; }
-        .float-soft { animation: float 5s ease-in-out infinite; }
-        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .card-hover:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.10); }
+
+        .fade-delay-1 {
+          animation: fadeUp 0.8s 0.15s ease forwards;
+          opacity: 0;
+        }
+
+        .fade-delay-2 {
+          animation: fadeUp 0.8s 0.3s ease forwards;
+          opacity: 0;
+        }
+
+        .card-hover {
+          transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .card-hover:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 24px 60px rgba(0,0,0,0.08);
+        }
       `}</style>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden px-5 pt-44 pb-20 text-center">
-        <div className="absolute inset-0 opacity-[0.3] bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.12)_1px,transparent_0)] bg-[size:22px_22px]" />
-        <div className="absolute left-1/2 top-32 -translate-x-1/2 h-[400px] w-[700px] rounded-full bg-blue-200/25 blur-[100px] opacity-60" />
+      {/* HERO */}
+      <section className="relative overflow-hidden px-5 pt-44 pb-32 text-center">
+        {/* GRID */}
+        <div className="absolute inset-0 opacity-[0.22] bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.12)_1px,transparent_0)] bg-[size:24px_24px]" />
 
-        <div className="relative z-10 mx-auto max-w-5xl">
-          <p className="fade-up mx-auto mb-5 w-fit rounded-full border border-black/10 bg-white/60 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-black/55">
+        {/* BLUR */}
+        <div className="absolute left-1/2 top-24 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-blue-300/20 blur-[120px]" />
+
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="fade-up mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-black/10 bg-white/70 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black/55 backdrop-blur">
+            <Sparkles size={14} className="text-blue-500" />
             About Velcor.ai
-          </p>
-          <h1 className="fade-delay-1 mx-auto max-w-5xl text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
-            We build GTM systems
+          </div>
+
+          <h1 className="fade-delay-1 text-5xl font-semibold tracking-[-0.06em] md:text-7xl lg:text-8xl">
+            Building intelligent
             <span className="block font-serif italic font-normal">
-              for modern B2B teams
+              revenue systems
             </span>
           </h1>
-          <p className="fade-delay-2 mx-auto mt-6 max-w-3xl text-lg leading-8 text-black/60">
-            Velcor.ai combines AI automation, outbound strategy, RevOps and CRM
-            workflows to help companies create cleaner, more predictable pipeline.
+
+          <p className="fade-delay-2 mx-auto mt-8 max-w-4xl text-lg leading-9 text-black/60">
+            Velcor.ai helps businesses achieve scalable growth through
+            AI-powered sales automation, intelligent workflows, CRM
+            optimization, and modern revenue operations infrastructure
+            designed for today’s evolving B2B landscape.
           </p>
         </div>
       </section>
 
-      {/* Mission */}
-      <section className="px-5 pb-24">
+      {/* INTRO */}
+      <section className="relative px-5 pb-28">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-          <div className="card-hover rounded-[2rem] border border-black/10 bg-black p-8 text-white shadow-2xl shadow-black/20 md:p-12">
-            <h2 className="text-4xl font-semibold tracking-[-0.05em] md:text-6xl">
-              Not just campaigns.
-              <span className="block font-serif italic font-normal text-blue-400">
-                Revenue infrastructure.
-              </span>
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-white/65">
-              Most teams run disconnected outbound, content, forms and CRM
-              workflows. We connect these into one operating system that finds
-              signals, enriches leads, personalizes outreach and routes pipeline.
-            </p>
-            <a
-              href="/contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-400"
-            >
-              Build with us <ArrowRight size={15} />
-            </a>
+          {/* LEFT */}
+          <div className="card-hover relative overflow-hidden rounded-[2.5rem] border border-black/10 bg-black p-10 text-white shadow-2xl shadow-black/20 md:p-14">
+            <div className="absolute right-[-100px] top-[-100px] h-[260px] w-[260px] rounded-full bg-blue-500/20 blur-3xl" />
+
+            <div className="relative z-10">
+              <h2 className="text-4xl font-semibold tracking-[-0.05em] md:text-6xl">
+                Not just tools.
+                <span className="block font-serif italic font-normal text-blue-400">
+                  Connected infrastructure.
+                </span>
+              </h2>
+
+              <p className="mt-8 text-lg leading-9 text-white/65">
+                At Velcor.ai, we believe modern businesses need more than
+                disconnected software, manual outreach, and fragmented
+                workflows. Companies today operate in an environment where
+                speed, efficiency, personalization, and scalability define
+                growth.
+              </p>
+
+              <p className="mt-6 text-lg leading-9 text-white/65">
+                Traditional sales and operational systems often create
+                inefficiencies, data silos, inconsistent reporting, and
+                operational bottlenecks that slow down pipeline generation
+                and revenue growth.
+              </p>
+
+              <p className="mt-6 text-lg leading-9 text-white/65">
+                Our goal is to eliminate those inefficiencies by building
+                intelligent revenue infrastructure powered by AI,
+                automation, analytics, and modern operational systems.
+              </p>
+
+              <a
+                href="/contact"
+                className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-blue-500 px-7 py-4 text-sm font-semibold text-white transition duration-300 hover:bg-blue-400"
+              >
+                Build With Velcor.ai
+                <ArrowRight size={15} />
+              </a>
+            </div>
           </div>
 
-          <div className="grid gap-4">
+          {/* RIGHT */}
+          <div className="grid gap-5">
             {values.map((value) => (
               <div
                 key={value.title}
-                className="card-hover flex items-start gap-4 rounded-2xl border border-black/10 bg-white/60 p-5 shadow-lg shadow-black/5"
+                className="card-hover flex items-start gap-4 rounded-[2rem] border border-black/10 bg-white/70 p-6 shadow-xl shadow-black/5 backdrop-blur"
               >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-500 text-white">
-                  <value.icon size={17} />
-                </span>
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-black text-blue-400">
+                  <value.icon size={20} />
+                </div>
+
                 <div>
-                  <p className="font-semibold text-black">{value.title}</p>
-                  <p className="mt-1 text-sm text-black/55">{value.desc}</p>
+                  <h3 className="text-lg font-semibold text-black">
+                    {value.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm leading-7 text-black/55">
+                    {value.desc}
+                  </p>
                 </div>
               </div>
             ))}
@@ -110,92 +192,202 @@ export default function About() {
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="border-y border-black/10 bg-white/45 px-5 py-24">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="mb-16 text-center text-4xl font-semibold tracking-[-0.05em] md:text-5xl">
-            Our journey
-            <span className="block font-serif italic font-normal">building GTM systems</span>
-          </h2>
+      {/* COMPANY STORY */}
+      <section className="border-y border-black/10 bg-white/40 px-5 py-28">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center">
+            <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-black/10 bg-white/70 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black/55">
+              <Target size={14} />
+              Our Mission
+            </div>
 
-          <div className="relative">
-            {/* vertical line */}
-            <div className="absolute left-[28px] top-0 h-full w-px bg-blue-200 md:left-1/2" />
+            <h2 className="text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
+              Smarter systems for
+              <span className="block font-serif italic font-normal">
+                predictable growth
+              </span>
+            </h2>
+          </div>
 
-            <div className="space-y-10">
-              {milestones.map((m, i) => (
-                <div
-                  key={m.year}
-                  className={`relative flex items-start gap-6 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
-                >
-                  {/* dot */}
-                  <div className="absolute left-[20px] flex h-[18px] w-[18px] items-center justify-center rounded-full bg-blue-500 shadow-lg shadow-blue-500/30 md:left-1/2 md:-translate-x-1/2 mt-4">
-                    <div className="h-2 w-2 rounded-full bg-white" />
-                  </div>
+          <div className="mx-auto mt-16 max-w-5xl space-y-8 text-lg leading-9 text-black/60">
+            <p>
+              Velcor.ai was built with a simple mission: to help businesses
+              create faster, smarter, and more predictable revenue engines
+              powered by AI and automation.
+            </p>
 
-                  {/* content */}
-                  <div className={`ml-12 md:ml-0 md:w-[45%] ${i % 2 === 0 ? "md:text-right md:pr-10" : "md:pl-10 md:ml-[55%]"}`}>
-                    <span className="text-xs font-bold uppercase tracking-widest text-blue-500">{m.year}</span>
-                    <p className="mt-1 text-base font-medium text-black/75 leading-relaxed">{m.event}</p>
-                  </div>
+            <p>
+              We help organizations transform how they generate, manage,
+              and convert opportunities by building connected systems that
+              streamline execution across the entire sales lifecycle.
+            </p>
+
+            <p>
+              Instead of relying on disconnected tools and repetitive
+              manual processes, we create intelligent operational
+              ecosystems that unify lead generation, outreach automation,
+              CRM management, analytics, and revenue operations into one
+              scalable infrastructure layer.
+            </p>
+
+            <p>
+              By combining AI-driven workflows, automation platforms,
+              modern CRM architecture, and advanced pipeline analytics, we
+              enable businesses to improve operational efficiency, enhance
+              customer engagement, and scale growth with greater
+              predictability.
+            </p>
+
+            <p>
+              Our systems are designed to reduce friction between teams,
+              eliminate repetitive operational tasks, improve reporting
+              visibility, and create more efficient workflows across sales,
+              marketing, and revenue operations.
+            </p>
+
+            <p>
+              Whether it’s automating lead qualification, improving CRM
+              synchronization, deploying AI-powered outbound systems, or
+              building scalable reporting infrastructure, Velcor.ai helps
+              businesses create operational clarity and sustainable growth.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="px-5 py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 text-center">
+            <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-black/10 bg-white/70 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black/55">
+              <Zap size={14} />
+              What We Do
+            </div>
+
+            <h2 className="text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
+              AI-powered systems
+              <span className="block font-serif italic font-normal">
+                built for scale
+              </span>
+            </h2>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {services.map((service) => (
+              <div
+                key={service}
+                className="card-hover rounded-[2rem] border border-black/10 bg-white/70 p-6 shadow-xl shadow-black/5 backdrop-blur"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-blue-400">
+                  <Check size={18} />
                 </div>
-              ))}
+
+                <p className="mt-5 text-base font-medium leading-7 text-black/75">
+                  {service}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY VELCOR */}
+      <section className="border-y border-black/10 bg-white/45 px-5 py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center">
+            <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-black/10 bg-white/70 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black/55">
+              <BarChart3 size={14} />
+              Why Velcor.ai
+            </div>
+
+            <h2 className="text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
+              Built for modern
+              <span className="block font-serif italic font-normal">
+                B2B growth teams
+              </span>
+            </h2>
+          </div>
+
+          <div className="mt-20 grid gap-8 lg:grid-cols-3">
+            <div className="card-hover rounded-[2.5rem] border border-black/10 bg-black p-8 text-white shadow-2xl shadow-black/10">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500 text-white">
+                <Cpu size={24} />
+              </div>
+
+              <h3 className="mt-8 text-2xl font-semibold">
+                AI Infrastructure
+              </h3>
+
+              <p className="mt-5 text-base leading-8 text-white/65">
+                We build scalable AI systems that automate repetitive
+                operations, optimize workflows, and improve revenue
+                execution across your organization.
+              </p>
+            </div>
+
+            <div className="card-hover rounded-[2.5rem] border border-black/10 bg-white/70 p-8 shadow-2xl shadow-black/5 backdrop-blur">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-blue-400">
+                <Globe size={24} />
+              </div>
+
+              <h3 className="mt-8 text-2xl font-semibold">
+                Connected Systems
+              </h3>
+
+              <p className="mt-5 text-base leading-8 text-black/60">
+                Our infrastructure connects CRM platforms, outreach
+                systems, analytics, AI workflows, and operational
+                processes into one intelligent ecosystem.
+              </p>
+            </div>
+
+            <div className="card-hover rounded-[2.5rem] border border-black/10 bg-white/70 p-8 shadow-2xl shadow-black/5 backdrop-blur">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-blue-400">
+                <BarChart3 size={24} />
+              </div>
+
+              <h3 className="mt-8 text-2xl font-semibold">
+                Revenue Operations
+              </h3>
+
+              <p className="mt-5 text-base leading-8 text-black/60">
+                We help organizations improve reporting visibility,
+                pipeline forecasting, operational clarity, and growth
+                predictability using modern RevOps infrastructure.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Team */}
-      <section className="px-5 py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-16 text-center">
-            <h2 className="text-4xl font-semibold tracking-[-0.05em] md:text-5xl">
-              The team behind
-              <span className="block font-serif italic font-normal">your GTM system</span>
+      {/* FINAL CTA */}
+      <section className="px-5 py-28">
+        <div className="relative mx-auto overflow-hidden rounded-[2.5rem] border border-black/10 bg-black px-8 py-16 text-center text-white shadow-2xl shadow-black/20 md:px-16">
+          <div className="absolute left-0 top-0 h-full w-full opacity-20 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.45),transparent_55%)]" />
+
+          <div className="relative z-10">
+            <h2 className="text-4xl font-semibold tracking-[-0.05em] md:text-6xl">
+              Ready to build your
+              <span className="block font-serif italic font-normal text-blue-400">
+                revenue infrastructure?
+              </span>
             </h2>
-            <p className="mx-auto mt-5 max-w-xl text-base text-black/55">
-              Operators, engineers, and strategists who've built revenue systems at fast-growing B2B companies.
+
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/65">
+              Whether you're a fast-growing startup or an enterprise
+              organization seeking operational efficiency, Velcor.ai helps
+              you optimize, automate, and scale your revenue systems with
+              intelligent infrastructure built for modern growth.
             </p>
-          </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {team.map((member, i) => (
-              <div
-                key={member.name}
-                className="card-hover group rounded-[2rem] border border-black/10 bg-white/60 p-6 shadow-xl shadow-black/5"
-              >
-                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-500 text-2xl font-bold text-white shadow-lg shadow-blue-500/20 transition group-hover:scale-110">
-                  {member.name[0]}
-                </div>
-                <h3 className="text-lg font-semibold">{member.name}</h3>
-                <p className="mt-1 text-sm text-black/55">{member.role}</p>
-                <span className="mt-4 inline-block rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
-                  {member.specialty}
-                </span>
-              </div>
-            ))}
+            <a
+              href="/contact"
+              className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-white px-8 py-4 text-sm font-semibold text-black transition duration-300 hover:bg-blue-400"
+            >
+              Let’s Connect
+              <ArrowRight size={15} />
+            </a>
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="px-5 pb-24 text-center">
-        <div className="mx-auto max-w-4xl rounded-[2rem] bg-black p-10 text-white shadow-2xl shadow-black/20 md:p-14">
-          <h2 className="text-4xl font-semibold tracking-[-0.05em] md:text-5xl">
-            Ready to build your
-            <span className="block font-serif italic font-normal text-blue-400">
-              revenue system?
-            </span>
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-white/60">
-            Apply for a pilot campaign and get a custom growth system mapped around your offer, market, and tools.
-          </p>
-          <a
-            href="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-blue-500 px-8 py-4 text-sm font-semibold text-white transition hover:bg-blue-400"
-          >
-            Apply Now <ArrowRight size={15} />
-          </a>
         </div>
       </section>
 

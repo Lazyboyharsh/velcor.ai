@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -188,7 +189,7 @@ export default function ServicesSection() {
   const activeItem = items[activeTab];
 
   return (
-    <section className="relative overflow-hidden bg-[#f6f1e8] py-24">
+    <section className="relative overflow-hidden bg-[#f6f1e8] py-20 md:py-24">
       {/* GRID */}
       <div className="absolute inset-0 opacity-[0.14] bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.12)_1px,transparent_0)] bg-[size:28px_28px]" />
 
@@ -199,15 +200,15 @@ export default function ServicesSection() {
 
       {/* TOP */}
       <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-6">
-        <div className="grid items-start gap-10 md:grid-cols-2 md:gap-14 mb-14">
+        <div className="mb-12 grid items-start gap-10 md:mb-14 md:grid-cols-2 md:gap-14">
           {/* LEFT */}
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-5 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-black/60 shadow-sm backdrop-blur">
+            <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-black/60 shadow-sm backdrop-blur md:px-5 md:text-xs">
               <Sparkles className="h-4 w-4 text-blue-500" />
               Intelligent Infrastructure
             </div>
 
-            <h2 className="mt-6 max-w-2xl text-[42px] font-semibold leading-[46px] tracking-[-0.05em] text-[#131313] md:text-[68px] md:leading-[72px]">
+            <h2 className="mt-6 max-w-2xl text-[34px] font-semibold leading-[38px] tracking-[-0.05em] text-[#131313] sm:text-[42px] sm:leading-[46px] md:text-[68px] md:leading-[72px]">
               AI Systems Built For
               <span className="block font-serif italic font-normal">
                 modern revenue growth
@@ -217,25 +218,25 @@ export default function ServicesSection() {
 
           {/* RIGHT */}
           <div>
-            <p className="max-w-lg text-[16px] leading-[32px] text-black/60 md:text-[18px]">
+            <p className="max-w-lg text-[15px] leading-[30px] text-black/60 md:text-[18px] md:leading-[32px]">
               We build AI-powered automation systems, scalable outbound
               infrastructure, and intelligent operational workflows designed
               for modern B2B growth teams.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              <div className="flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-5 py-3 shadow-lg backdrop-blur">
+              <div className="flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-3 shadow-lg backdrop-blur md:px-5">
                 <Globe className="h-4 w-4 text-blue-500" />
 
-                <span className="text-sm font-medium text-black">
+                <span className="text-xs font-medium text-black md:text-sm">
                   Global Infrastructure
                 </span>
               </div>
 
-              <div className="flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-5 py-3 shadow-lg backdrop-blur">
+              <div className="flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-3 shadow-lg backdrop-blur md:px-5">
                 <Workflow className="h-4 w-4 text-blue-500" />
 
-                <span className="text-sm font-medium text-black">
+                <span className="text-xs font-medium text-black md:text-sm">
                   Automated Workflows
                 </span>
               </div>
@@ -246,9 +247,9 @@ export default function ServicesSection() {
 
       {/* VIDEO AREA */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-6">
-        {/* FLOATING TABS */}
-        <div className="absolute bottom-6 left-1/2 z-20 w-[92%] -translate-x-1/2 md:bottom-16 md:left-5 md:w-auto md:translate-x-0">
-          <div className="rounded-[30px] border border-white/20 bg-black/80 p-3 shadow-2xl backdrop-blur-2xl md:w-[280px]">
+        {/* TABS */}
+        <div className="relative z-20 mb-6 md:absolute md:bottom-16 md:left-5 md:mb-0">
+          <div className="overflow-hidden rounded-[24px] border border-white/15 bg-black/80 p-2 shadow-2xl backdrop-blur-2xl md:w-[280px]">
             <div className="grid grid-cols-2 gap-2 md:grid-cols-1">
               {items.map((tab, index) => {
                 const Icon = tab.icon;
@@ -258,7 +259,7 @@ export default function ServicesSection() {
                     key={index}
                     onClick={() => setActiveTab(index)}
                     className={`
-                      group flex items-center gap-3 rounded-2xl border px-4 py-3 text-left transition-all duration-300
+                      group flex items-center gap-2 rounded-2xl border px-3 py-3 text-left transition-all duration-300 md:gap-3 md:px-4
                       ${
                         activeTab === index
                           ? "border-blue-400/30 bg-blue-500/10"
@@ -268,7 +269,7 @@ export default function ServicesSection() {
                   >
                     <Icon
                       className={`
-                        h-5 w-5 shrink-0 transition-colors duration-300
+                        h-4 w-4 shrink-0 transition-colors duration-300 md:h-5 md:w-5
                         ${
                           activeTab === index
                             ? "text-blue-400"
@@ -279,7 +280,7 @@ export default function ServicesSection() {
 
                     <span
                       className={`
-                        text-[13px] font-medium transition-colors duration-300 md:text-[15px]
+                        text-[11px] font-medium transition-colors duration-300 md:text-[14px]
                         ${
                           activeTab === index
                             ? "text-white"
@@ -298,11 +299,13 @@ export default function ServicesSection() {
 
         {/* VIDEO CONTAINER */}
         <div
-          className="relative h-[520px] overflow-hidden border border-black/10 shadow-2xl shadow-black/10 md:h-[760px]"
+          className="relative min-h-[760px] overflow-hidden border border-black/10 shadow-2xl shadow-black/10 md:h-[760px] md:min-h-0"
           style={{
             clipPath:
-              "polygon(0 0, 92% 0, 100% 12%, 100% 100%, 30% 100%, 22% 88%, 0 88%)",
-            borderRadius: "38px",
+              typeof window !== "undefined" && window.innerWidth >= 768
+                ? "polygon(0 0, 92% 0, 100% 12%, 100% 100%, 30% 100%, 22% 88%, 0 88%)"
+                : "none",
+            borderRadius: "32px",
           }}
         >
           {/* VIDEO */}
@@ -322,17 +325,15 @@ export default function ServicesSection() {
             />
           </AnimatePresence>
 
-          {/* DARK OVERLAY */}
+          {/* OVERLAYS */}
           <div className="absolute inset-0 bg-black/30" />
 
-          {/* BLUE GLOW */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.22),transparent_55%)]" />
 
-          {/* GRADIENT */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
           {/* CENTER CARD */}
-          <div className="absolute inset-0 flex items-center justify-center px-4">
+          <div className="absolute inset-0 flex items-end justify-center px-4 pb-8 md:items-center md:pb-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeItem.card.heading}
@@ -340,26 +341,26 @@ export default function ServicesSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 14 }}
                 transition={{ duration: 0.35 }}
-                className="w-full max-w-[360px] rounded-[30px] border border-white/15 bg-black/70 p-6 shadow-2xl backdrop-blur-2xl"
+                className="w-full max-w-[340px] rounded-[26px] border border-white/15 bg-black/70 p-5 shadow-2xl backdrop-blur-2xl md:max-w-[360px] md:rounded-[30px] md:p-6"
               >
                 {/* HEADER */}
                 <div className="flex items-center justify-between gap-3">
-                  <h3 className="text-[20px] font-semibold text-white">
+                  <h3 className="text-[18px] font-semibold text-white md:text-[20px]">
                     {activeItem.card.heading}
                   </h3>
 
-                  <span className="rounded-lg border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[11px] text-blue-300">
+                  <span className="rounded-lg border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[10px] text-blue-300 md:text-[11px]">
                     {activeItem.card.badge}
                   </span>
                 </div>
 
                 {/* GOAL */}
                 <div className="mt-5 rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="text-[11px] uppercase tracking-[0.15em] text-white/40">
+                  <p className="text-[10px] uppercase tracking-[0.15em] text-white/40 md:text-[11px]">
                     Goal
                   </p>
 
-                  <p className="mt-2 text-[13px] leading-[22px] text-white/85">
+                  <p className="mt-2 text-[12px] leading-[22px] text-white/85 md:text-[13px]">
                     {activeItem.card.goal}
                   </p>
                 </div>
@@ -390,7 +391,7 @@ export default function ServicesSection() {
                       <div>
                         <p
                           className={`
-                            text-[13px]
+                            text-[12px] md:text-[13px]
                             ${
                               task.status === "completed"
                                 ? "text-white/45 line-through"
@@ -403,7 +404,7 @@ export default function ServicesSection() {
                           {task.title}
                         </p>
 
-                        <p className="mt-1 text-[11px] text-white/35">
+                        <p className="mt-1 text-[10px] text-white/35 md:text-[11px]">
                           {task.meta}
                         </p>
                       </div>
@@ -412,7 +413,7 @@ export default function ServicesSection() {
                 </div>
 
                 {/* FOOTER */}
-                <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-5 text-[11px] text-white/40">
+                <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-5 text-[10px] text-white/40 md:text-[11px]">
                   <span>2/5 tasks complete</span>
 
                   <div className="flex items-center gap-1 text-blue-300">

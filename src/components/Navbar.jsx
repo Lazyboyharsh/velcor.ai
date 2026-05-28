@@ -56,13 +56,18 @@ export default function Navbar() {
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 lg:px-8">
 
           {/* ── Logo ────────────────────────────────────────────────────────── */}
-          <Link
-            to="/"
-            onClick={closeMenu}
-            className="text-xl font-bold tracking-tight text-black"
-          >
-            Velcor.ai
-          </Link>
+          {/* ── Logo ────────────────────────────────────────────────────────── */}
+<Link
+  to="/"
+  onClick={closeMenu}
+  className="flex items-center"
+>
+  <img
+    src="public\logo.png"
+    alt="Velcor.ai Logo"
+    className="h-10 w-auto object-contain"
+  />
+</Link>
 
           {/* ── Desktop: centre nav links ────────────────────────────────────── */}
           {/* Visible only on md and above */}
