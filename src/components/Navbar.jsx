@@ -63,7 +63,7 @@ export default function Navbar() {
   className="flex items-center"
 >
   <img
-    src="public\logo.png"
+    src="\logo.png"
     alt="Velcor.ai Logo"
     className="h-10 w-auto object-contain"
   />

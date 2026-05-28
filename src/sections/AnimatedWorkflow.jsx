@@ -8,7 +8,7 @@ export default function HeroVideoSection() {
           {/* Video */}
           <video
             className="w-full h-auto"
-            src="public\video.mp4"
+            src="/video.mp4"
             autoPlay
             muted
             loop
