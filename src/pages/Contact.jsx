@@ -253,7 +253,7 @@ export default function Contact() {
                   </p>
 
                   <p className="font-medium">
-                    velcor.ai.team@gmail.com
+                    team@velcor.ai
                   </p>
                 </div>
               </div>
@@ -287,7 +287,7 @@ export default function Contact() {
                   </p>
 
                   <p className="font-medium">
-                    Remote GTM systems worldwide
+                    Delaware, United States
                   </p>
                 </div>
               </div>

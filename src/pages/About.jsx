@@ -99,10 +99,10 @@ export default function About() {
         <div className="absolute left-1/2 top-24 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-blue-300/20 blur-[120px]" />
 
         <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="fade-up mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-black/10 bg-white/70 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black/55 backdrop-blur">
+          {/* <div className="fade-up mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-black/10 bg-white/70 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black/55 backdrop-blur">
             <Sparkles size={14} className="text-blue-500" />
             About Velcor.ai
-          </div>
+          </div> */}
 
           <h1 className="fade-delay-1 text-5xl font-semibold tracking-[-0.06em] md:text-7xl lg:text-8xl">
             Building intelligent
