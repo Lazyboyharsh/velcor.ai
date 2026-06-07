@@ -12,15 +12,18 @@ export default function Navbar() {
     { name: "Blog", path: "/blog" },
     { name: "About", path: "/about" },
     { name: "Infrastructure", path: "/infrastructure" },
+    { name: "Contact", path: "/contact" },
   ];
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
 
-    onScroll();
-    window.addEventListener("scroll", onScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -34,84 +37,81 @@ export default function Navbar() {
   const closeMenu = () => setOpen(false);
 
   return (
-    <>
-      {/* ───────────────── Banner ───────────────── */}
-      <div className="fixed left-0 top-0 z-[70] w-full bg-black px-4 py-2 text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-300 sm:text-xs">
-        ⚡ Only 5 pilot campaign slots available this month
-      </div>
+    <header
+      className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? "border-b border-black/10 bg-[#f6f1e8]/95 shadow-lg backdrop-blur-xl"
+          : "bg-[#f6f1e8]/80 backdrop-blur-md"
+      }`}
+    >
+      <nav className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 lg:px-8">
+        {/* Logo */}
+        <Link
+          to="/"
+          onClick={closeMenu}
+          className="relative z-50 flex items-center"
+        >
+          <img
+            src="/logo.png"
+            alt="Velcor.ai Logo"
+            className="h-12 w-auto object-contain transition-all duration-300 lg:h-14"
+          />
+        </Link>
 
-      {/* ───────────────── Navbar ───────────────── */}
-      <header
-        className={`fixed left-0 top-9 z-[60] w-full border-b border-black/10 transition-all duration-300 ${
-          scrolled
-            ? "bg-[#f6f1e8] shadow-md"
-            : "bg-[#f6f1e8]/90 backdrop-blur-md"
-        }`}
-      >
-        <nav className="relative mx-auto flex h-[84px] max-w-7xl items-center justify-between px-5 lg:px-8">
-
-          {/* ───────────────── Logo ───────────────── */}
-          <Link
-            to="/"
-            onClick={closeMenu}
-            className="flex shrink-0 items-center"
-          >
-            <img
-              src="/logo.png"
-              alt="Velcor.ai Logo"
-              className="h-14 w-auto object-contain transition-all duration-300 lg:h-16"
-            />
-          </Link>
-
-          {/* ───────────────── Desktop Navigation ───────────────── */}
-          <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full border border-black/10 bg-white/70 p-1.5 backdrop-blur-sm md:flex">
+        {/* Desktop Navigation */}
+        <div className="hidden items-center md:flex">
+          <div className="flex items-center gap-1 rounded-full border border-black/10 bg-white/70 p-1.5 shadow-sm backdrop-blur-md">
             {links.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className="rounded-full px-4 py-2 text-sm font-medium text-black/65 transition-all duration-300 hover:bg-white hover:text-black"
+                className="rounded-full px-4 py-2 text-sm font-medium text-black/65 transition-all duration-300 hover:bg-black hover:text-white"
               >
                 {item.name}
               </Link>
             ))}
           </div>
+        </div>
 
-          {/* ───────────────── Desktop CTA ───────────────── */}
-          <div className="ml-auto hidden items-center gap-3 md:flex">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-xl bg-black px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-600"
-            >
-              Apply For Pilot
-              <ArrowRight size={15} />
-            </Link>
-          </div>
-
-          {/* ───────────────── Mobile Menu Button ───────────────── */}
-          <button
-            onClick={() => setOpen(!open)}
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            className="flex h-11 w-11 items-center justify-center rounded-xl text-black transition-all duration-300 hover:bg-black/5 active:scale-95 md:hidden"
+        {/* Desktop CTA */}
+        <div className="hidden items-center gap-3 md:flex">
+          <Link
+            to="/contact"
+            className="group inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.03] hover:bg-blue-600"
           >
-            {open ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </nav>
+            Book Strategy Call
+            <ArrowRight
+              size={15}
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </Link>
+        </div>
 
-        {/* ───────────────── Mobile Menu ───────────────── */}
-        <div
-          className={`overflow-hidden border-t border-black/10 bg-[#f6f1e8] transition-all duration-300 ease-in-out md:hidden ${
-            open ? "max-h-[700px] opacity-100" : "max-h-0 opacity-0"
-          }`}
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setOpen(!open)}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          className="relative z-50 flex h-10 w-10 items-center justify-center rounded-xl text-black transition-all duration-300 hover:bg-black/5 md:hidden"
         >
-          <div className="flex flex-col px-5 pb-6 pt-2">
+          {open ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </nav>
 
+      {/* Mobile Menu */}
+      <div
+        className={`absolute top-full left-0 w-full overflow-hidden border-t border-black/10 bg-[#f6f1e8]/95 shadow-xl backdrop-blur-xl transition-all duration-300 ease-in-out md:hidden ${
+          open ? "max-h-[700px] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="px-5 py-4">
+          <div className="flex flex-col">
             {links.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
                 onClick={closeMenu}
-                className="flex items-center justify-between border-b border-black/10 py-4 text-sm font-semibold text-black/75 transition-all duration-300 hover:text-black last:border-none"
+                className="flex items-center justify-between border-b border-black/10 py-4 text-sm font-medium text-black/75 transition-all duration-300 hover:text-black last:border-none"
               >
                 {item.name}
                 <ArrowRight
@@ -120,29 +120,20 @@ export default function Navbar() {
                 />
               </Link>
             ))}
+          </div>
 
-            <div className="mt-5 flex flex-col gap-3">
-              <Link
-                to="/contact"
-                onClick={closeMenu}
-                className="flex w-full items-center justify-center rounded-xl border border-black/15 bg-white py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-black/5"
-              >
-                Book Demo
-              </Link>
-
-              <Link
-                to="/contact"
-                onClick={closeMenu}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-black py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-600"
-              >
-                Apply For Pilot
-                <ArrowRight size={14} />
-              </Link>
-            </div>
-
+          <div className="mt-6">
+            <Link
+              to="/contact"
+              onClick={closeMenu}
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-black py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-600"
+            >
+              Book Strategy Call
+              <ArrowRight size={15} />
+            </Link>
           </div>
         </div>
-      </header>
-    </>
+      </div>
+    </header>
   );
 }

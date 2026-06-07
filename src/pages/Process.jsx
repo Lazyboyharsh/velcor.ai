@@ -127,13 +127,7 @@ export default function Process() {
 
         <div className="relative z-10 mx-auto max-w-7xl">
           <div className="text-center">
-            {/* <motion.div
-              initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
-              className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-black/10 bg-white/70 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black/55 backdrop-blur"
-            >
-              <Sparkles size={14} />
-              AI Revenue Infrastructure
-            </motion.div> */}
+      
 
             <motion.h1
               initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}
@@ -247,103 +241,196 @@ export default function Process() {
       </section>
 
       {/* PROCESS */}
-      <section className="relative px-5 py-28">
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center">
-            <h2 className="text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
-              Deployment
-              <span className="block font-serif italic font-normal">process architecture</span>
-            </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-black/60">
-              Every engagement follows a scalable infrastructure-first framework designed for modern B2B growth systems.
-            </p>
-          </div>
+       <section className="relative px-5 py-28">
+  <div className="mx-auto max-w-7xl">
+    <div className="text-center">
+      <p className="mx-auto mb-5 w-fit rounded-full border border-black/10 bg-white/60 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-black/55">
+        Deployment Framework
+      </p>
 
-          <div className="relative mt-24">
-            <div className="absolute left-1/2 top-0 hidden h-full w-[2px] -translate-x-1/2 bg-black/10 lg:block" />
-            <div className="space-y-12">
-              {process.map((item, index) => (
-                <div
-                  key={item.title}
-                  className={`grid items-center gap-10 lg:grid-cols-2 ${index % 2 !== 0 ? "lg:[&>*:first-child]:order-2" : ""}`}
-                >
-                  <motion.div
-                    initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7 }} viewport={{ once: true }}
-                  >
-                    <div className="group relative overflow-hidden rounded-[2.5rem] border border-black/10 bg-white/70 p-8 shadow-xl shadow-black/5 backdrop-blur transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
-                      <div className="absolute right-[-60px] top-[-60px] h-44 w-44 rounded-full bg-blue-400/10 blur-3xl transition duration-500 group-hover:bg-blue-400/20" />
-                      <div className="relative z-10">
-                        <div className="flex items-center justify-between">
-                          {/* Real brand logo on black bg */}
-                          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-black">
-                            <BrandIcon
-                              id={processIcons[index].id}
-                              name={processIcons[index].name}
-                              className="h-8 w-8"
-                              white={true}
-                            />
-                          </div>
-                          <span className="text-sm font-semibold tracking-[0.15em] text-black/35">
-                            STEP {item.step}
-                          </span>
-                        </div>
-                        <h3 className="mt-8 text-4xl font-semibold tracking-tight">{item.title}</h3>
-                        <p className="mt-6 text-base leading-8 text-black/60">{item.desc}</p>
-                        <div className="mt-8 flex items-center gap-2 text-sm font-semibold text-blue-500">
-                          Learn More <ArrowRight size={14} />
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
+      <h2 className="text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
+        Deployment
+        <span className="block font-serif italic font-normal">
+          process architecture
+        </span>
+      </h2>
 
-                  <div className="hidden lg:flex justify-center">
-                    <motion.div
-                      whileHover={{ scale: 1.08 }}
-                      className="flex h-28 w-28 items-center justify-center rounded-full border border-black/10 bg-black text-3xl font-semibold text-blue-400 shadow-xl"
-                    >
+      <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-black/60">
+        Every engagement follows a structured implementation framework
+        designed to build, launch, and optimize revenue infrastructure
+        with predictable outcomes.
+      </p>
+    </div>
+
+    <div className="relative mt-24">
+      <div className="absolute left-1/2 top-0 hidden h-full w-[2px] -translate-x-1/2 bg-black/10 lg:block" />
+
+      <div className="space-y-12">
+        {[
+          {
+            step: "01",
+            title: "Strategy & Market Mapping",
+            desc: "Define ideal customer profiles, acquisition criteria, positioning, and growth objectives before infrastructure deployment begins.",
+          },
+          {
+            step: "02",
+            title: "Infrastructure Deployment",
+            desc: "Build CRM architecture, prospect databases, enrichment workflows, reporting systems, and automation foundations.",
+          },
+          {
+            step: "03",
+            title: "Campaign Activation",
+            desc: "Launch outbound programs, founder engagement workflows, multi-channel outreach, and pipeline generation systems.",
+          },
+          {
+            step: "04",
+            title: "Measurement & Optimization",
+            desc: "Track performance, improve conversion rates, refine messaging, and continuously optimize revenue operations.",
+          },
+        ].map((item, index) => (
+          <div
+            key={item.title}
+            className={`grid items-center gap-10 lg:grid-cols-2 ${
+              index % 2 !== 0
+                ? "lg:[&>*:first-child]:order-2"
+                : ""
+            }`}
+          >
+            {/* Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+            >
+              <div className="group relative overflow-hidden rounded-[2.5rem] border border-black/10 bg-white/70 p-8 shadow-xl shadow-black/5 backdrop-blur transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                <div className="absolute right-[-60px] top-[-60px] h-44 w-44 rounded-full bg-blue-400/10 blur-3xl transition duration-500 group-hover:bg-blue-400/20" />
+
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between">
+                    {/* Generic Step Badge */}
+                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-black text-lg font-semibold text-white">
                       {item.step}
-                    </motion.div>
+                    </div>
+
+                    <span className="text-sm font-semibold tracking-[0.15em] text-black/35">
+                      PHASE {item.step}
+                    </span>
                   </div>
+
+                  <h3 className="mt-8 text-4xl font-semibold tracking-tight">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-6 text-base leading-8 text-black/60">
+                    {item.desc}
+                  </p>
+
+                  {/* Accent Line */}
+                  <div className="mt-8 h-[2px] w-12 rounded-full bg-blue-400" />
                 </div>
-              ))}
+              </div>
+            </motion.div>
+
+            {/* Timeline Number */}
+            <div className="hidden justify-center lg:flex">
+              <motion.div
+                whileHover={{ scale: 1.08 }}
+                className="flex h-28 w-28 items-center justify-center rounded-full border border-black/10 bg-black text-3xl font-semibold text-blue-400 shadow-xl"
+              >
+                {item.step}
+              </motion.div>
             </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* ECOSYSTEM */}
       <section className="border-y border-black/10 bg-white/40 px-5 py-28">
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center">
-            <h2 className="text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
-              One connected
-              <span className="block font-serif italic font-normal">revenue ecosystem</span>
-            </h2>
+  <div className="mx-auto max-w-7xl">
+    <div className="text-center">
+      <p className="mx-auto mb-5 w-fit rounded-full border border-black/10 bg-white/60 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-black/55">
+        Connected Infrastructure
+      </p>
+
+      <h2 className="text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
+        One connected
+        <span className="block font-serif italic font-normal">
+          revenue ecosystem
+        </span>
+      </h2>
+
+      <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-black/60">
+        Every component works together to create a predictable system for
+        sourcing, engagement, pipeline visibility, and revenue growth.
+      </p>
+    </div>
+
+    <div className="mt-20 grid gap-6 lg:grid-cols-5">
+      {[
+        {
+          icon: "01",
+          title: "Market Intelligence",
+          desc: "Identify high-value accounts using acquisition criteria, intent signals, and market research.",
+        },
+        {
+          icon: "02",
+          title: "Prospect Database",
+          desc: "Build enriched contact databases with verified decision-makers and company insights.",
+        },
+        {
+          icon: "03",
+          title: "Outreach Engine",
+          desc: "Launch personalized outbound campaigns across email, LinkedIn, and automated workflows.",
+        },
+        {
+          icon: "04",
+          title: "CRM Infrastructure",
+          desc: "Centralize conversations, opportunities, reporting, and relationship management.",
+        },
+        {
+          icon: "05",
+          title: "Revenue Analytics",
+          desc: "Track pipeline performance, conversion metrics, and growth opportunities in real time.",
+        },
+      ].map((item, i) => (
+        <motion.div
+          key={item.title}
+          whileHover={{ y: -8 }}
+          className="relative flex min-h-[320px] flex-col rounded-[2rem] border border-black/10 bg-[#f6f1e8] p-8 shadow-lg shadow-black/5"
+        >
+          {/* Generic Number Badge */}
+          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-black text-lg font-semibold text-white">
+            {item.icon}
           </div>
 
-          <div className="mt-20 grid gap-6 lg:grid-cols-5">
-            {ecosystem.map((item, i) => (
-              <motion.div
-                whileHover={{ y: -8 }}
-                key={item.title}
-                className="relative rounded-[2rem] border border-black/10 bg-[#f6f1e8] p-6 text-center shadow-lg"
-              >
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-black">
-                  <BrandIcon id={item.iconId} name={item.iconName} className="h-8 w-8" white={true} />
-                </div>
-                <h3 className="mt-6 text-xl font-semibold">{item.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-black/55">
-                  Unified infrastructure connected through intelligent workflows and automation systems.
-                </p>
-                {i !== 4 && (
-                  <div className="absolute -right-3 top-1/2 hidden h-[2px] w-6 bg-black/20 lg:block" />
-                )}
-              </motion.div>
-            ))}
+          {/* Title */}
+          <h3 className="mt-6 min-h-[64px] text-xl font-semibold leading-tight">
+            {item.title}
+          </h3>
+
+          {/* Description */}
+          <p className="mt-4 text-sm leading-7 text-black/60">
+            {item.desc}
+          </p>
+
+          {/* Connector */}
+          {i !== 4 && (
+            <div className="absolute -right-3 top-1/2 hidden h-[2px] w-6 bg-black/20 lg:block" />
+          )}
+
+          {/* Bottom Accent */}
+          <div className="mt-auto pt-8">
+            <div className="h-[2px] w-12 rounded-full bg-blue-400" />
           </div>
-        </div>
-      </section>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* STATS */}
       <section className="px-5 py-28">

@@ -167,58 +167,60 @@ export default function ServicesPage() {
 
       {/* SERVICES */}
 
-      <section className="px-5 pb-24">
-        <div className="mx-auto mb-16 max-w-4xl text-center">
-          <h2 className="text-4xl font-semibold tracking-[-0.05em] md:text-6xl">
-            Infrastructure systems
-            <span className="block font-serif italic font-normal">
-              that compound over time
-            </span>
-          </h2>
+   {/* SERVICES */}
 
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-black/60">
-            Every engagement is designed around long-term relationship
-            development, pipeline visibility, and proprietary opportunity
-            creation.
-          </p>
+<section className="px-5 pb-32">
+  <div className="mx-auto mb-20 max-w-4xl text-center">
+    <h2 className="text-5xl font-semibold leading-[0.95] tracking-[-0.08em] md:text-7xl">
+      Infrastructure systems
+      <span className="block font-serif italic font-normal">
+        that compound over time
+      </span>
+    </h2>
+
+    <p className="mx-auto mt-8 max-w-2xl text-[18px] leading-8 text-black/55">
+      Every engagement is designed around long-term relationship
+      development, pipeline visibility, and proprietary opportunity
+      creation.
+    </p>
+  </div>
+
+  <div className="mx-auto grid max-w-7xl items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3">
+    {services.map((service) => (
+      <div
+        key={service.title}
+        className="group flex h-full flex-col rounded-[2rem] border border-black/10 bg-white/70 p-8 shadow-xl shadow-black/[0.04] backdrop-blur transition-all duration-500 hover:-translate-y-2 hover:bg-white hover:shadow-2xl"
+      >
+        <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-blue-400">
+          <service.icon size={24} />
         </div>
 
-        <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="group rounded-[2rem] border border-black/10 bg-white/60 p-6 shadow-xl shadow-black/5 backdrop-blur transition duration-300 hover:-translate-y-2 hover:bg-white/75 hover:shadow-2xl"
+        <h3 className="min-h-[78px] text-[1.65rem] font-semibold leading-[1.15] tracking-[-0.03em] text-black">
+          {service.title}
+        </h3>
+
+        <p className="mt-5 min-h-[150px] text-[15px] leading-8 text-black/60">
+          {service.desc}
+        </p>
+
+        <ul className="mt-auto space-y-4 pt-6">
+          {service.points.map((p) => (
+            <li
+              key={p}
+              className="flex items-center gap-3 text-[15px] font-medium text-black/70"
             >
-              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-blue-400">
-                <service.icon size={23} />
-              </div>
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-400 text-black">
+                <Check size={12} />
+              </span>
 
-              <h3 className="text-2xl font-semibold tracking-tight">
-                {service.title}
-              </h3>
-
-              <p className="mt-4 text-sm leading-7 text-black/65">
-                {service.desc}
-              </p>
-
-              <ul className="mt-6 space-y-3">
-                {service.points.map((p) => (
-                  <li
-                    key={p}
-                    className="flex items-center gap-3 text-sm font-medium text-black/70"
-                  >
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-400 text-black">
-                      <Check size={13} />
-                    </span>
-
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </div>
+              {p}
+            </li>
           ))}
-        </div>
-      </section>
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
             {/* HOW WE BUILD INFRASTRUCTURE */}
 
       <section className="border-y border-black/10 bg-white/45 px-5 py-24">
@@ -236,110 +238,154 @@ export default function ServicesPage() {
               operational visibility, and founder relationship infrastructure.
             </p>
           </div>
+<div className="mt-20 grid gap-8 md:grid-cols-2 lg:grid-cols-5">
+  {[
+    {
+      title: "PE Firms",
+      text: "Lower middle-market firms seeking proprietary acquisition opportunities.",
+    },
 
-          <div className="mt-16 grid gap-4 md:grid-cols-4">
-            {[
-              [
-                "01",
-                "Map The Market",
-                "Identify businesses, founders, acquisition criteria, and opportunities aligned with your thesis.",
-              ],
+    {
+      title: "Independent Sponsors",
+      text: "Operators building scalable sourcing infrastructure beyond personal networks.",
+    },
 
-              [
-                "02",
-                "Build The System",
-                "Deploy sourcing, CRM, reporting, and automation infrastructure.",
-              ],
+    {
+      title: "Search Funds",
+      text: "Searchers using systems and automation to improve acquisition sourcing.",
+    },
 
-              [
-                "03",
-                "Activate Relationships",
-                "Launch founder engagement systems and pipeline generation workflows.",
-              ],
+    {
+      title: "Family Offices",
+      text: "Permanent capital operators building founder-direct relationships.",
+    },
 
-              [
-                "04",
-                "Compound Results",
-                "Continuously improve visibility, relationships, and sourcing leverage.",
-              ],
-            ].map(([num, title, text]) => (
-              <div
-                key={title}
-                className="rounded-[2rem] border border-black/10 bg-[#f6f1e8] p-6"
-              >
-                <p className="text-sm font-semibold text-black/40">{num}</p>
+    {
+      title: "Marketplaces",
+      text: "Platforms scaling seller acquisition and buyer engagement infrastructure.",
+    },
+  ].map((item) => (
+    <div
+      key={item.title}
+      className="group flex min-h-[280px] flex-col rounded-[2rem] border border-black/10 bg-white/70 p-8 shadow-lg shadow-black/[0.04] transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
+    >
+      {/* Fixed Heading Height */}
+      <h3 className="min-h-[80px] text-[1.6rem] font-semibold leading-[1.15] tracking-[-0.03em] text-black">
+        {item.title}
+      </h3>
 
-                <h3 className="mt-4 text-2xl font-semibold">{title}</h3>
+      {/* Fixed Description Area */}
+      <p className="mt-5 text-[15px] leading-8 text-black/60">
+        {item.text}
+      </p>
 
-                <p className="mt-4 text-sm leading-7 text-black/60">
-                  {text}
-                </p>
-              </div>
-            ))}
-          </div>
+      {/* Bottom Accent */}
+      <div className="mt-auto pt-8">
+        <div className="h-px w-12 bg-black/10"></div>
+      </div>
+    </div>
+  ))}
+</div>
         </div>
       </section>
 
       {/* BUILT FOR */}
 
-      <section className="px-5 py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center">
-            <p className="mx-auto mb-5 w-fit rounded-full border border-black/10 bg-white/60 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-black/55">
-              Built For Operators
-            </p>
+      {/* BUILT FOR */}
 
-            <h2 className="text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
-              Designed for firms
-              <span className="block font-serif italic font-normal">
-                that acquire and grow
-              </span>
-            </h2>
-          </div>
+{/* BUILT FOR */}
 
-          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-5">
-            {[
-              {
-                title: "PE Firms",
-                text: "Lower middle-market firms seeking proprietary acquisition opportunities.",
-              },
+<section className="px-5 py-24">
+  <div className="mx-auto max-w-7xl">
+    <div className="text-center">
+      <p className="mx-auto mb-5 w-fit rounded-full border border-black/10 bg-white/60 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-black/55">
+        Built For Operators
+      </p>
 
-              {
-                title: "Independent Sponsors",
-                text: "Operators building scalable sourcing infrastructure beyond personal networks.",
-              },
+      <h2 className="text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
+        Designed for firms
+        <span className="block font-serif italic font-normal">
+          that acquire and grow
+        </span>
+      </h2>
 
-              {
-                title: "Search Funds",
-                text: "Searchers using systems and automation to improve acquisition sourcing.",
-              },
+      <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-black/60">
+        Purpose-built infrastructure for acquisition-focused organizations.
+      </p>
+    </div>
 
-              {
-                title: "Family Offices",
-                text: "Permanent capital operators building founder-direct relationships.",
-              },
+    <div className="mt-20 grid gap-6 lg:grid-cols-12">
+      {/* Large Featured Card */}
+      <div className="rounded-[2rem] border border-black/10 bg-white/60 p-8 shadow-xl shadow-black/5 lg:col-span-5">
+        <span className="text-sm font-semibold uppercase tracking-wide text-blue-500">
+          Primary Users
+        </span>
 
-              {
-                title: "Marketplaces",
-                text: "Platforms scaling seller acquisition and buyer engagement infrastructure.",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="rounded-[2rem] border border-black/10 bg-white/60 p-6 shadow-lg shadow-black/5"
-              >
-                <h3 className="text-xl font-semibold">
-                  {item.title}
-                </h3>
+        <h3 className="mt-4 text-3xl font-semibold tracking-tight">
+          Private Equity &
+          <br />
+          Independent Sponsors
+        </h3>
 
-                <p className="mt-4 text-sm leading-7 text-black/60">
-                  {item.text}
-                </p>
-              </div>
-            ))}
-          </div>
+        <p className="mt-5 max-w-md text-base leading-8 text-black/60">
+          Proprietary sourcing infrastructure, founder-direct outreach,
+          relationship management, and acquisition intelligence systems.
+        </p>
+
+        <div className="mt-8 flex flex-wrap gap-2">
+          {[
+            "Deal Flow",
+            "Founder Outreach",
+            "CRM Systems",
+            "Pipeline Visibility",
+          ].map((item) => (
+            <span
+              key={item}
+              className="rounded-full border border-black/10 bg-[#f6f1e8] px-3 py-2 text-xs font-medium"
+            >
+              {item}
+            </span>
+          ))}
         </div>
-      </section>
+      </div>
+
+      {/* Right Side Cards */}
+      <div className="grid gap-6 lg:col-span-7 lg:grid-cols-2">
+        {[
+          {
+            title: "Search Funds",
+            text: "Automated sourcing and acquisition workflows.",
+          },
+          {
+            title: "Family Offices",
+            text: "Founder-direct relationship infrastructure.",
+          },
+          {
+            title: "Marketplaces",
+            text: "Seller acquisition and buyer engagement systems.",
+          },
+          {
+            title: "Acquisition Operators",
+            text: "Scalable pipeline and opportunity management.",
+          },
+        ].map((item) => (
+          <div
+            key={item.title}
+            className="rounded-[2rem] border border-black/10 bg-white/60 p-7 shadow-lg shadow-black/5"
+          >
+            <h3 className="text-xl font-semibold">
+              {item.title}
+            </h3>
+
+            <p className="mt-4 text-sm leading-7 text-black/60">
+              {item.text}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* ENGAGEMENT MODELS */}
 

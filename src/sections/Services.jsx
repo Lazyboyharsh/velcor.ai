@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -195,20 +194,15 @@ export default function ServicesSection() {
 
       {/* BLUR ORBS */}
       <div className="absolute left-[-120px] top-10 h-[320px] w-[320px] rounded-full bg-blue-400/20 blur-3xl" />
-
       <div className="absolute right-[-120px] bottom-0 h-[320px] w-[320px] rounded-full bg-blue-500/20 blur-3xl" />
 
-      {/* TOP */}
+      {/* TOP SECTION - HEADING & PARAGRAPH ON SAME HEIGHT */}
       <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-6">
         <div className="mb-12 grid items-start gap-10 md:mb-14 md:grid-cols-2 md:gap-14">
-          {/* LEFT */}
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-black/60 shadow-sm backdrop-blur md:px-5 md:text-xs">
-              <Sparkles className="h-4 w-4 text-blue-500" />
-              Intelligent Infrastructure
-            </div>
-
-            <h2 className="mt-6 max-w-2xl text-[34px] font-semibold leading-[38px] tracking-[-0.05em] text-[#131313] sm:text-[42px] sm:leading-[46px] md:text-[68px] md:leading-[72px]">
+          
+          {/* LEFT - HEADING */}
+          <div className="flex flex-col justify-start">
+            <h2 className="text-[34px] font-semibold leading-[38px] tracking-[-0.05em] text-[#131313] sm:text-[42px] sm:leading-[46px] md:text-[68px] md:leading-[72px]">
               AI Systems Built For
               <span className="block font-serif italic font-normal">
                 modern revenue growth
@@ -216,31 +210,13 @@ export default function ServicesSection() {
             </h2>
           </div>
 
-          {/* RIGHT */}
-          <div>
-            <p className="max-w-lg text-[15px] leading-[30px] text-black/60 md:text-[18px] md:leading-[32px]">
+          {/* RIGHT - PARAGRAPH (SAME HEIGHT AS HEADING) */}
+          <div className="flex flex-col justify-start h-full">
+            <p className="text-[15px] leading-[30px] text-black/60 md:text-[18px] md:leading-[32px]">
               We build AI-powered automation systems, scalable outbound
               infrastructure, and intelligent operational workflows designed
               for modern B2B growth teams.
             </p>
-
-            <div className="mt-7 flex flex-wrap gap-3">
-              <div className="flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-3 shadow-lg backdrop-blur md:px-5">
-                <Globe className="h-4 w-4 text-blue-500" />
-
-                <span className="text-xs font-medium text-black md:text-sm">
-                  Global Infrastructure
-                </span>
-              </div>
-
-              <div className="flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-3 shadow-lg backdrop-blur md:px-5">
-                <Workflow className="h-4 w-4 text-blue-500" />
-
-                <span className="text-xs font-medium text-black md:text-sm">
-                  Automated Workflows
-                </span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -327,9 +303,7 @@ export default function ServicesSection() {
 
           {/* OVERLAYS */}
           <div className="absolute inset-0 bg-black/30" />
-
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.22),transparent_55%)]" />
-
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
           {/* CENTER CARD */}
@@ -418,7 +392,6 @@ export default function ServicesSection() {
 
                   <div className="flex items-center gap-1 text-blue-300">
                     <span>Est. 45s remaining</span>
-
                     <ArrowRight className="h-3 w-3" />
                   </div>
                 </div>
