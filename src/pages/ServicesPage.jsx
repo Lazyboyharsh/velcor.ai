@@ -298,9 +298,9 @@ export default function ServicesPage() {
 <section className="px-5 py-24">
   <div className="mx-auto max-w-7xl">
     <div className="text-center">
-      <p className="mx-auto mb-5 w-fit rounded-full border border-black/10 bg-white/60 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-black/55">
+      {/* <p className="mx-auto mb-5 w-fit rounded-full border border-black/10 bg-white/60 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-black/55">
         Built For Operators
-      </p>
+      </p> */}
 
       <h2 className="text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
         Designed for firms
