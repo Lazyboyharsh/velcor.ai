@@ -11,6 +11,7 @@ import PilotCTA from "../sections/PilotCTA";
 import Footer from "../sections/Footer";
 import BookingPopup from "../components/BookingPopup";
 import AnimatedWorkflow from "../sections/AnimatedWorkflow";
+import HomeSlider from "../sections/HomeSlider";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <Results />
        <AnimatedWorkflow />
       <Testimonials />
+       <HomeSlider />
       <FAQ />
       <PilotCTA />
       <Footer />
