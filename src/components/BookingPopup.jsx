@@ -236,16 +236,23 @@ export default function BookingPopup() {
           </button>
 
           {/* header */}
-          <div className="flex items-center gap-3">
-            <div className="relative flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-400 to-cyan-400 shadow-lg shadow-blue-500/30">
-              <Sparkles size={17} className="text-black" />
-              <span className="absolute -right-1 -top-1 h-3 w-3 animate-pulse rounded-full bg-green-500 ring-2 ring-black" />
-            </div>
-            <div>
-              <p className="text-sm font-semibold">Velcor.ai Team</p>
-              <p className="text-xs text-white/60">Revenue Engineering</p>
-            </div>
-          </div>
+         <div className="flex items-center gap-3">
+  <div className="relative flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-white to-cyan-400 shadow-lg shadow-blue-500/30 overflow-hidden">
+    
+    <img
+      src="/favicon.svg"
+      alt="Velcor.ai Logo"
+      className="h-8 w-8 object-contain"
+    />
+
+    {/* <span className="absolute -right-1 -top-1 h-3 w-3 animate-pulse rounded-full bg-green-500 ring-2 ring-black" /> */}
+  </div>
+
+  <div>
+    <p className="text-sm font-semibold">Velcor.ai Team</p>
+    <p className="text-xs text-white/60">Revenue Engineering</p>
+  </div>
+</div>
 
           <h3 className="mt-4 text-xl font-semibold leading-tight sm:text-2xl">
             Book your <span className="block text-blue-400">Strategy Call</span>

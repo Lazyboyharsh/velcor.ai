@@ -256,15 +256,23 @@ export default function PilotCTA() {
             <div className="absolute -top-24 right-0 h-52 w-52 rounded-full bg-blue-500/20 blur-3xl pointer-events-none" />
 
             {/* header */}
-            <div className="relative flex items-center gap-3 sm:gap-4">
-              <div className="relative h-12 w-12 flex-shrink-0 rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 shadow-lg shadow-blue-500/30 sm:h-14 sm:w-14">
-                <span className="absolute -right-1 top-0 h-3 w-3 animate-pulse rounded-full bg-green-500 ring-2 ring-black sm:h-3.5 sm:w-3.5" />
-              </div>
-              <div>
-                <p className="text-base font-semibold sm:text-lg">Velcor.ai Team</p>
-                <p className="text-xs text-white/60 sm:text-sm">Revenue Engineering</p>
-              </div>
-            </div>
+          <div className="relative flex items-center gap-3 sm:gap-4">
+  <div className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white shadow-lg shadow-gray-500/20 sm:h-14 sm:w-14 overflow-hidden">
+    
+    <img
+      src="/favicon.svg"
+      alt="Velcor.ai Logo"
+      className="h-8 w-8 object-contain sm:h-10 sm:w-10"
+    />
+
+    {/* <span className="absolute -right-1 top-0 h-3 w-3 animate-pulse rounded-full bg-green-500 ring-2 ring-black sm:h-3.5 sm:w-3.5" /> */}
+  </div>
+
+  <div>
+    <p className="text-base font-semibold sm:text-lg">Velcor.ai Team</p>
+    <p className="text-xs text-white/60 sm:text-sm">Revenue Engineering</p>
+  </div>
+</div>
 
             <h3 className="relative mt-6 text-2xl font-semibold leading-tight tracking-tight sm:mt-8 sm:text-4xl">
               Book your
