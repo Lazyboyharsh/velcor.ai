@@ -202,7 +202,7 @@ export default function Pricing() {
               </ul>
 
               <Link
-                to="/contact"
+                to="/schedule-meeting"
                 className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-sm font-semibold transition hover:scale-[1.02] ${
                   plan.highlight
                     ? "bg-blue-500 text-white hover:bg-blue-400"
@@ -324,7 +324,7 @@ export default function Pricing() {
             stage, offer, and goals — no pressure.
           </p>
           <Link
-            to="/contact"
+            to="/schedule-meeting"
             className="mt-8 inline-flex items-center gap-2 rounded-xl bg-blue-500 px-8 py-4 text-sm font-semibold text-white transition hover:bg-blue-400"
           >
             Book Free Strategy Call <ArrowRight size={15} />

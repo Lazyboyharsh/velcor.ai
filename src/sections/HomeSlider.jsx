@@ -2,9 +2,12 @@ export default function HomeSlider() {
   const images = [
     "/slider1.jpeg",
     "/slider2.jpeg",
-    "/slider3.jpeg",
+    // "/slider3.jpeg",
     "/slider4.jpeg",
-    "/slider5.jpeg",
+    // "/slider5.jpeg",
+    "/slider6.png",
+    "/slider7.png",
+    "/slider8.png",
   ];
 
   return (

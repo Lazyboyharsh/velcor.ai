@@ -347,19 +347,7 @@ export default function Footer() {
 
             </div>
 
-            {/* CREDIT */}
-            {/* <div className="text-sm text-black/50">
-              Design & Developed by{" "}
-
-              <a
-                href="https://www.lazyworkz.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-black transition hover:text-blue-600"
-              >
-                LazyWorkz
-              </a>
-            </div> */}
+  
 
           </div>
         </div>

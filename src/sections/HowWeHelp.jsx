@@ -164,7 +164,7 @@ export default function HowWeHelp() {
             placeholder="Enter your work email"
             className="min-h-12 flex-1 rounded-xl px-4 text-sm text-slate-900 outline-none placeholder:text-slate-400"
           />
-          <button className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 text-xs font-bold uppercase tracking-wide text-white transition hover:bg-blue-700">
+          <a href="/schedule-meeting" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 text-xs font-bold uppercase tracking-wide text-white transition hover:bg-blue-700">
             Book a call
             <ArrowRight size={15} />
           </button>

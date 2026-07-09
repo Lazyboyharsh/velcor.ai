@@ -156,7 +156,7 @@ export default function ServicesPage() {
           </p>
 
           <a
-            href="/contact"
+            href="/schedule-meeting"
             className="mt-9 inline-flex items-center gap-2 rounded-xl bg-black px-7 py-4 text-sm font-semibold text-white transition hover:bg-blue-500 hover:text-white"
           >
             Book Strategy Call
@@ -465,7 +465,7 @@ export default function ServicesPage() {
           </p>
 
           <a
-            href="/contact"
+            href="/schedule-meeting"
             className="mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-7 py-4 text-sm font-semibold text-black transition hover:bg-blue-400"
           >
             Book Strategy Call

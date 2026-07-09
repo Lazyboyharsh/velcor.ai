@@ -10,87 +10,56 @@ import {
   MapPin,
   Loader2,
   CheckCircle2,
+  CircleAlert,
 } from "lucide-react";
 
+const WEB3FORMS_ACCESS_KEY =
+  "c70b2c7c-243d-44d8-adc5-dcfcef157e6f";
+
+const INITIAL_FORM_DATA = {
+  name: "",
+  email: "",
+  website: "",
+  service: "",
+  message: "",
+};
+
 export default function Contact() {
-  // =========================================
-  // FORM STATE
-  // =========================================
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    website: "",
-    service: "",
+  const [formData, setFormData] = useState(INITIAL_FORM_DATA);
+  const [loading, setLoading] = useState(false);
+
+  const [status, setStatus] = useState({
+    type: "",
     message: "",
   });
 
-  const [loading, setLoading] =
-    useState(false);
-
-  // =========================================
-  // INPUT CHANGE
-  // =========================================
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    const { name, value } = e.target;
 
-      [e.target.name]: e.target.value,
-    });
+    setFormData((current) => ({
+      ...current,
+      [name]: value,
+    }));
+
+    if (status.message) {
+      setStatus({
+        type: "",
+        message: "",
+      });
+    }
   };
 
-  // =========================================
-  // SUBMIT FORM
-  // =========================================
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (loading) return;
+
     setLoading(true);
 
-    const web3FormData = new FormData();
-
-    // WEB3FORMS API
-    web3FormData.append(
-      "access_key",
-      "c70b2c7c-243d-44d8-adc5-dcfcef157e6f"
-    );
-
-    web3FormData.append(
-      "subject",
-      "🚀 New Contact Enquiry - Velcor.ai"
-    );
-
-    web3FormData.append(
-      "from_name",
-      "Velcor.ai Website"
-    );
-
-    // USER DATA
-    web3FormData.append(
-      "Full Name",
-      formData.name
-    );
-
-    web3FormData.append(
-      "Email",
-      formData.email
-    );
-
-    web3FormData.append(
-      "Company Website",
-      formData.website
-    );
-
-    web3FormData.append(
-      "Service Needed",
-      formData.service
-    );
-
-    web3FormData.append(
-      "Message",
-      formData.message
-    );
-
-    web3FormData.append("botcheck", "");
+    setStatus({
+      type: "",
+      message: "",
+    });
 
     try {
       const response = await fetch(
@@ -98,110 +67,52 @@ export default function Contact() {
         {
           method: "POST",
 
-          body: web3FormData,
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+
+          body: JSON.stringify({
+            access_key: WEB3FORMS_ACCESS_KEY,
+            subject:
+              "New Contact Enquiry - " +
+              formData.name +
+              " - Velcor.ai",
+            from_name: "Velcor.ai Website",
+            name: formData.name,
+            email: formData.email,
+            website:
+              formData.website || "Not provided",
+            service: formData.service,
+            message: formData.message,
+            source: "Velcor.ai Contact Page",
+          }),
         }
       );
 
       const data = await response.json();
 
-      // SUCCESS
-      if (data.success) {
-        const successBox =
-          document.createElement("div");
-
-        successBox.innerHTML = `
-          <div style="
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            z-index: 99999;
-            background: #111111;
-            color: white;
-            padding: 18px 20px;
-            border-radius: 18px;
-            border: 1px solid rgba(255,255,255,0.08);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-            min-width: 320px;
-            font-family: sans-serif;
-            animation: slideIn .4s ease;
-          ">
-            <div style="
-              display:flex;
-              align-items:flex-start;
-              gap:14px;
-            ">
-              
-              <div style="
-                width:44px;
-                height:44px;
-                border-radius:14px;
-                background:#3b82f6;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                font-size:20px;
-              ">
-                ✅
-              </div>
-
-              <div>
-                <h3 style="
-                  margin:0;
-                  font-size:16px;
-                  font-weight:700;
-                ">
-                  Enquiry Submitted
-                </h3>
-
-                <p style="
-                  margin:6px 0 0;
-                  font-size:13px;
-                  line-height:1.6;
-                  color:rgba(255,255,255,0.65);
-                ">
-                  Velcor.ai team will contact you within 24 hours.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <style>
-            @keyframes slideIn {
-              from {
-                opacity:0;
-                transform:translateY(-20px);
-              }
-
-              to {
-                opacity:1;
-                transform:translateY(0);
-              }
-            }
-          </style>
-        `;
-
-        document.body.appendChild(successBox);
-
-        // REMOVE AFTER 4 SEC
-        setTimeout(() => {
-          successBox.remove();
-        }, 4000);
-
-        // RESET FORM
-        setFormData({
-          name: "",
-          email: "",
-          website: "",
-          service: "",
-          message: "",
-        });
-      } else {
-        alert("Failed to send enquiry");
+      if (!response.ok || !data.success) {
+        throw new Error(
+          data.message ||
+            "Unable to submit enquiry."
+        );
       }
-    } catch (error) {
-      console.log(error);
 
-      alert("Something went wrong");
+      setStatus({
+        type: "success",
+        message:
+          "Enquiry submitted successfully. Velcor.ai will contact you within 24 hours.",
+      });
+
+      setFormData(INITIAL_FORM_DATA);
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message:
+          error.message ||
+          "Unable to submit enquiry. Please try again.",
+      });
     } finally {
       setLoading(false);
     }
@@ -209,40 +120,36 @@ export default function Contact() {
 
   return (
     <main className="min-h-screen bg-[#f6f1e8] text-black">
-      
       <Navbar />
 
       <section className="px-5 pb-24 pt-40">
-        
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          
           {/* LEFT CONTENT */}
+
           <div>
-            
             <p className="mb-5 w-fit rounded-full border border-black/10 bg-white/60 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-black/55">
               Contact
             </p>
 
             <h1 className="text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
-              Let’s build your
-              
+              Let&apos;s build your
+
               <span className="block font-serif font-normal italic">
                 GTM system
               </span>
             </h1>
 
             <p className="mt-6 max-w-xl text-lg leading-8 text-black/60">
-              Share your offer, ICP and current
-              sales workflow. We’ll map a pilot
-              campaign and automation system for
-              your pipeline.
+              Share your offer, ICP and current sales workflow.
+              We&apos;ll map a pilot campaign and automation system
+              for your pipeline.
             </p>
 
-            {/* CONTACT INFO */}
             <div className="mt-10 space-y-5">
-              
-              <div className="flex items-center gap-4 rounded-2xl border border-black/10 bg-white/60 p-4 backdrop-blur">
-                
+              <a
+                href="mailto:team@velcor.ai"
+                className="flex items-center gap-4 rounded-2xl border border-black/10 bg-white/60 p-4 backdrop-blur transition hover:-translate-y-1 hover:bg-white"
+              >
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-500 text-white">
                   <Mail size={18} />
                 </div>
@@ -256,10 +163,12 @@ export default function Contact() {
                     team@velcor.ai
                   </p>
                 </div>
-              </div>
+              </a>
 
-              <div className="flex items-center gap-4 rounded-2xl border border-black/10 bg-white/60 p-4 backdrop-blur">
-                
+              <a
+                href="/schedule-meeting"
+                className="flex items-center gap-4 rounded-2xl border border-black/10 bg-white/60 p-4 backdrop-blur transition hover:-translate-y-1 hover:bg-white"
+              >
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-500 text-white">
                   <Phone size={18} />
                 </div>
@@ -273,10 +182,9 @@ export default function Contact() {
                     Book a free consultation
                   </p>
                 </div>
-              </div>
+              </a>
 
               <div className="flex items-center gap-4 rounded-2xl border border-black/10 bg-white/60 p-4 backdrop-blur">
-                
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-500 text-white">
                   <MapPin size={18} />
                 </div>
@@ -295,18 +203,17 @@ export default function Contact() {
           </div>
 
           {/* FORM */}
+
           <form
             onSubmit={handleSubmit}
             className="rounded-[2rem] border border-black/10 bg-white/65 p-6 shadow-2xl shadow-black/10 backdrop-blur md:p-8"
           >
-            
-            {/* NAME + EMAIL */}
             <div className="grid gap-4 md:grid-cols-2">
-              
               <input
                 type="text"
                 name="name"
                 required
+                autoComplete="name"
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Full name"
@@ -317,6 +224,7 @@ export default function Contact() {
                 type="email"
                 name="email"
                 required
+                autoComplete="email"
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Work email"
@@ -324,9 +232,8 @@ export default function Contact() {
               />
             </div>
 
-            {/* WEBSITE */}
             <input
-              type="text"
+              type="url"
               name="website"
               value={formData.website}
               onChange={handleChange}
@@ -334,7 +241,6 @@ export default function Contact() {
               className="mt-4 min-h-14 w-full rounded-xl border border-black/10 bg-white px-4 text-sm outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-200"
             />
 
-            {/* SELECT */}
             <select
               name="service"
               required
@@ -346,39 +252,67 @@ export default function Contact() {
                 What do you need help with?
               </option>
 
-              <option>
+              <option value="Outbound lead generation">
                 Outbound lead generation
               </option>
 
-              <option>
+              <option value="CRM automation">
                 CRM automation
               </option>
 
-              <option>
+              <option value="AI sales workflows">
                 AI sales workflows
               </option>
 
-              <option>
+              <option value="Full GTM system">
                 Full GTM system
+              </option>
+
+              <option value="AI Automation">
+                AI Automation
               </option>
             </select>
 
-            {/* MESSAGE */}
             <textarea
-              rows="6"
+              rows={6}
               name="message"
               required
               value={formData.message}
               onChange={handleChange}
               placeholder="Tell us about your offer, ICP and current sales process..."
-              className="mt-4 w-full rounded-xl border border-black/10 bg-white p-4 text-sm outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-200"
+              className="mt-4 w-full resize-y rounded-xl border border-black/10 bg-white p-4 text-sm outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-200"
             />
 
-            {/* BUTTON */}
+            {status.message && (
+              <div
+                role="status"
+                className={
+                  "mt-4 flex items-start gap-3 rounded-xl border p-4 text-sm " +
+                  (status.type === "success"
+                    ? "border-green-200 bg-green-50 text-green-700"
+                    : "border-red-200 bg-red-50 text-red-700")
+                }
+              >
+                {status.type === "success" ? (
+                  <CheckCircle2
+                    size={18}
+                    className="mt-0.5 shrink-0"
+                  />
+                ) : (
+                  <CircleAlert
+                    size={18}
+                    className="mt-0.5 shrink-0"
+                  />
+                )}
+
+                <span>{status.message}</span>
+              </div>
+            )}
+
             <button
               type="submit"
               disabled={loading}
-              className="mt-5 inline-flex w-full items-center justify-center gap-3 rounded-xl bg-black px-6 py-4 text-sm font-semibold text-white transition hover:bg-blue-500 hover:text-white disabled:cursor-not-allowed disabled:opacity-70"
+              className="mt-5 inline-flex w-full items-center justify-center gap-3 rounded-xl bg-black px-6 py-4 text-sm font-semibold text-white transition hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-70"
             >
               {loading ? (
                 <>
@@ -394,11 +328,9 @@ export default function Contact() {
                   <CheckCircle2 size={18} />
 
                   Submit enquiry
-                </>
-              )}
 
-              {!loading && (
-                <ArrowRight size={15} />
+                  <ArrowRight size={15} />
+                </>
               )}
             </button>
 

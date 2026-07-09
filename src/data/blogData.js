@@ -1,6 +1,7 @@
 export const blogPosts = [
   {
     slug: "proprietary-deal-flow-vs-brokers",
+    thumbnail: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80",
     category: "Deal Flow",
     title: "Why Proprietary Deal Flow Beats Broker-Led Sourcing in 2026",
     excerpt:
@@ -176,6 +177,7 @@ They will be the firms with the best systems.
 
   {
     slug: "ai-search-fund-sourcing",
+    thumbnail: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
     category: "Search Funds",
     title:
       "How Search Funds Are Using AI To Source Better Acquisition Opportunities",
@@ -305,6 +307,7 @@ The future belongs to operators who combine disciplined acquisition criteria wit
 
   {
     slug: "founder-direct-acquisition",
+    thumbnail: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80",
     category: "M&A",
     title: "The Rise of Founder-Direct Acquisition Infrastructure",
 
@@ -445,6 +448,7 @@ Operators who invest in founder-direct systems today are positioning themselves 
   },
 {
   slug: "compounding-acquisition-engine",
+    thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
 
   category: "Revenue Infrastructure",
 
@@ -632,6 +636,7 @@ And leverage compounds.
 
 {
   slug: "independent-sponsor-dealflow",
+    thumbnail: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
 
   category: "Independent Sponsors",
 
@@ -769,6 +774,7 @@ Infrastructure makes them scalable.
 
 {
   slug: "ai-lower-middle-market-ma",
+    thumbnail: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
 
   category: "AI & M&A",
 
@@ -924,6 +930,7 @@ The firms acting today will be best positioned tomorrow.
 },
 {
   slug: "pipeline-architecture-marketplaces",
+    thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
 
   category: "Marketplace",
 
@@ -1100,6 +1107,7 @@ The future belongs to marketplaces built on infrastructure.
 
 {
   slug: "relationship-capital",
+    thumbnail: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80",
 
   category: "Founder Relationships",
 
@@ -1261,6 +1269,7 @@ The firms that invest in trust today will create opportunities for years to come
 
 {
   slug: "future-of-revenue-infrastructure",
+    thumbnail: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1200&q=80",
 
   category: "Revenue Infrastructure",
 

@@ -260,7 +260,7 @@ export default function BlogPost() {
               </p>
 
               <a
-                href="/contact"
+                href="/schedule-meeting"
                 className="mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-blue-400"
               >
                 Book Strategy Call

@@ -305,7 +305,7 @@ export default function Infrastructure() {
           </motion.p>
           <motion.a
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
-            href="/contact"
+            href="/schedule-meeting"
             className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-black px-8 py-4 text-sm font-semibold text-white transition duration-300 hover:bg-blue-500"
           >
             Build Your Stack <ArrowRight size={15} />
@@ -523,7 +523,7 @@ export default function Infrastructure() {
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/65">
               We engineer scalable AI systems, connected workflows, automation infrastructure, and operational architecture designed for modern B2B growth.
             </p>
-            <a href="/contact" className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-white px-8 py-4 text-sm font-semibold text-black transition duration-300 hover:bg-blue-400">
+            <a href="/schedule-meeting" className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-white px-8 py-4 text-sm font-semibold text-black transition duration-300 hover:bg-blue-400">
               Book Strategy Call <ArrowRight size={15} />
             </a>
           </div>

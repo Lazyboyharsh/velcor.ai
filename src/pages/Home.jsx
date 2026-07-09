@@ -9,7 +9,6 @@ import Testimonials from "../sections/Testimonials";
 import FAQ from "../sections/FAQ";
 import PilotCTA from "../sections/PilotCTA";
 import Footer from "../sections/Footer";
-import BookingPopup from "../components/BookingPopup";
 import AnimatedWorkflow from "../sections/AnimatedWorkflow";
 import HomeSlider from "../sections/HomeSlider";
 
@@ -28,7 +27,6 @@ export default function Home() {
       <FAQ />
       <PilotCTA />
       <Footer />
-      <BookingPopup />
     </main>
   );
 }

@@ -74,18 +74,19 @@ export default function Navbar() {
         </div>
 
         {/* Desktop CTA */}
-        <div className="hidden items-center gap-3 md:flex">
-          <Link
-            to="/contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.03] hover:bg-blue-600"
-          >
-            Book Strategy Call
-            <ArrowRight
-              size={15}
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            />
-          </Link>
-        </div>
+       <div className="hidden items-center gap-3 md:flex">
+  <Link
+    to="/schedule-meeting"
+    className="group inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.03] hover:bg-blue-600"
+  >
+    Book Strategy Call
+
+    <ArrowRight
+      size={15}
+      className="transition-transform duration-300 group-hover:translate-x-1"
+    />
+  </Link>
+</div>
 
         {/* Mobile Menu Button */}
         <button
@@ -124,7 +125,7 @@ export default function Navbar() {
 
           <div className="mt-6">
             <Link
-              to="/contact"
+              to="/schedule-meeting"
               onClick={closeMenu}
               className="flex w-full items-center justify-center gap-2 rounded-xl bg-black py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-600"
             >
