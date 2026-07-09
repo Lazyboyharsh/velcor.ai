@@ -73,7 +73,7 @@ export default function Footer() {
             </p>
 
             <Link
-              to="/contact"
+              to="/schedule-meeting"
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-600"
             >
               Claim Free Revenue Audit
