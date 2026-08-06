@@ -8,7 +8,7 @@ import { ArrowLeft } from "lucide-react";
 
 const LAST_UPDATED = "May 17, 2025";
 const COMPANY     = "Velcor.ai";
-const EMAIL       = "legal@velcor.ai";
+const EMAIL       = "team@velcor.ai";
 const SITE        = "https://velcor.ai";
 
 export default function TermsOfService() {
