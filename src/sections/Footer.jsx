@@ -57,13 +57,16 @@ export default function Footer() {
               />
             </Link>
 
-            <div className="mt-6 flex items-center gap-2">
-              <span className="h-2.5 w-2.5 rounded-full bg-green-500 animate-pulse"></span>
+          <div className="flex items-center m-3 gap-3">
+  <span className="relative flex h-3.5 w-3.5 shrink-0">
+    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#166534]/40"></span>
+    <span className="relative inline-flex h-3.5 w-3.5 rounded-full bg-[#166534] shadow-[0_0_10px_rgba(22,101,52,0.45)]"></span>
+  </span>
 
-              <span className="text-xs font-medium text-black/60">
-                Currently onboarding new B2B clients
-              </span>
-            </div>
+  <span className="text-sm font-bold tracking-tight text-[#000]">
+    Currently onboarding new B2B clients
+  </span>
+</div>
 
             <p className="mt-6 max-w-md text-[15px] leading-8 text-black/55">
               AI-native revenue infrastructure for outbound systems,

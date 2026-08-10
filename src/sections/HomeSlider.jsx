@@ -11,11 +11,28 @@ export default function HomeSlider() {
   ];
 
   return (
-    <section className="py-10 md:py-16 bg-[#f6f1e8] overflow-hidden">
+    <section className="bg-[#f6f1e8] py-20 md:py-28">
+      {/* Section Heading */}
+      <div className="mx-auto mb-12 max-w-7xl px-5 text-center md:mb-16">
+        <span className="mb-4 inline-flex rounded-full border border-black/10 bg-white/60 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-black/55 backdrop-blur">
+          Results That Drive Revenue
+        </span>
+
+        <h2 className="mt-2 text-3xl font-semibold tracking-[-0.04em] text-black sm:text-4xl md:text-5xl">
+          The systems behind predictable growth.
+        </h2>
+
+        <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-black/50 sm:text-base">
+          Systems built to turn better data, smarter workflows, and consistent
+          execution into measurable revenue.
+        </p>
+      </div>
+
+      {/* Slider */}
       <div className="slider-container">
         <div className="slider-track">
           {[...images, ...images].map((image, index) => (
-            <div key={index} className="slider-card">
+            <div className="slider-card" key={`${image}-${index}`}>
               <img
                 src={image}
                 alt={`Slide ${index + 1}`}

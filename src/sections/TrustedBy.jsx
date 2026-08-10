@@ -28,7 +28,7 @@ export default function TrustedBy() {
 
       <div className="absolute inset-0 opacity-[0.3] bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.12)_1px,transparent_0)] bg-[size:22px_22px]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-5">
+      <div className="relative z-10 mx-auto max-w-7xl -mt-14 px-5">
         <div className="mb-10 flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
           <div>
             {/* <p className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/60 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-black/55">
