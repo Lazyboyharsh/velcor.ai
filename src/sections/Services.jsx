@@ -25,7 +25,7 @@ const items = [
       "Advanced AI workflow systems that automate operations, lead management, and business execution.",
 
     video:
-      "https://res.cloudinary.com/dy4bqxt8p/video/upload/v1779622196/new107_qhrklf.mp4",
+      "https://www.pexels.com/download/video/36405803/",
 
     card: {
       heading: "AI Workflow",
@@ -66,7 +66,7 @@ const items = [
       "Scalable outbound systems and AI-powered lead generation infrastructure for modern businesses.",
 
     video:
-      "https://res.cloudinary.com/dy4bqxt8p/video/upload/v1779621768/new105_meaomd.mp4",
+      "https://www.pexels.com/download/video/14152861/",
 
     card: {
       heading: "Lead Engine",
@@ -107,7 +107,7 @@ const items = [
       "Enterprise-grade data collection, organization, and AI-ready infrastructure systems.",
 
     video:
-      "https://res.cloudinary.com/dy4bqxt8p/video/upload/v1779622220/new108_k1a47m.mp4",
+      "https://www.pexels.com/download/video/6037155/",
 
     card: {
       heading: "Data Infrastructure",
@@ -148,7 +148,7 @@ const items = [
       "Connected revenue infrastructure combining analytics, CRM, automation, and operational intelligence.",
 
     video:
-      "https://res.cloudinary.com/dy4bqxt8p/video/upload/v1779622271/02_u2efg7.mp4",
+      "https://www.pexels.com/download/video/29167798/",
 
     card: {
       heading: "Revenue Stack",
