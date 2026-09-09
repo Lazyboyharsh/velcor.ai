@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Seo from "../components/Seo";
 import Navbar from "../components/Navbar";
 import Footer from "../sections/Footer";
 import { ArrowRight, Home } from "lucide-react";
@@ -6,6 +7,12 @@ import { ArrowRight, Home } from "lucide-react";
 export default function NotFound() {
   return (
     <main className="min-h-screen bg-[#f6f1e8] text-black">
+      <Seo
+        title="Page not found"
+        description="The page you're looking for doesn't exist or has moved."
+        path="/404"
+        noindex
+      />
       <Navbar />
       <style>{`
         @keyframes fadeUp {

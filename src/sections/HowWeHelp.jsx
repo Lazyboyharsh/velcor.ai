@@ -167,7 +167,7 @@ export default function HowWeHelp() {
           <a href="/schedule-meeting" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 text-xs font-bold uppercase tracking-wide text-white transition hover:bg-blue-700">
             Book a call
             <ArrowRight size={15} />
-          </button>
+          </a>
         </div>
       </div>
     </section>

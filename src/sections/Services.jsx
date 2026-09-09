@@ -275,14 +275,7 @@ export default function ServicesSection() {
 
         {/* VIDEO CONTAINER */}
         <div
-          className="relative min-h-[760px] overflow-hidden border border-black/10 shadow-2xl shadow-black/10 md:h-[760px] md:min-h-0"
-          style={{
-            clipPath:
-              typeof window !== "undefined" && window.innerWidth >= 768
-                ? "polygon(0 0, 92% 0, 100% 12%, 100% 100%, 30% 100%, 22% 88%, 0 88%)"
-                : "none",
-            borderRadius: "32px",
-          }}
+          className="services-video-clip relative min-h-[760px] overflow-hidden border border-black/10 shadow-2xl shadow-black/10 md:h-[760px] md:min-h-0"
         >
           {/* VIDEO */}
           <AnimatePresence mode="wait">

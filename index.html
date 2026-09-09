@@ -6,72 +6,66 @@
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-  <!-- SEO -->
+  <!-- SEO: per-page title, description, canonical, robots, Open Graph, Twitter
+       and per-page JSON-LD are injected per route by src/components/Seo.jsx
+       (and baked into static HTML at build time by scripts/prerender.mjs).
+       The default title below is only a fallback for un-prerendered routes. -->
   <title>Velcor.ai | AI Revenue Infrastructure for Modern B2B Growth</title>
-
-  <meta
-    name="description"
-    content="Velcor.ai builds AI-powered outbound systems, RevOps automation, CRM workflows, and revenue infrastructure that help B2B companies generate predictable pipeline and accelerate sustainable growth worldwide."
-  />
 
   <meta name="keywords" content="AI revenue infrastructure, AI outbound, RevOps, sales automation, B2B lead generation, AI sales systems, CRM automation, revenue operations, GTM automation, pipeline generation, outbound automation" />
 
-  <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#f6f1e8" />
 
-  <link rel="canonical" href="https://velcor.ai/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://velcor.ai/" />
-  <meta property="og:title" content="Velcor.ai | AI Revenue Infrastructure for Modern B2B Growth" />
-  <meta property="og:description" content="AI-powered outbound, RevOps automation, CRM workflows, and revenue infrastructure for ambitious B2B companies worldwide." />
-  <meta property="og:image" content="https://velcor.ai/logo.png" />
-  <meta property="og:site_name" content="Velcor.ai" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Velcor.ai | AI Revenue Infrastructure" />
-  <meta name="twitter:description" content="AI-powered outbound, RevOps automation, CRM workflows, and revenue infrastructure for B2B growth." />
-  <meta name="twitter:image" content="https://velcor.ai/logo.png" />
-
-  <!-- Organization Schema -->
+  <!-- Site-wide entity graph (Organization + WebSite). Per-page WebPage,
+       BreadcrumbList and Service/Article nodes are injected per route by src/components/Seo.jsx -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Velcor.ai",
-    "url":"https://velcor.ai",
-    "logo":"https://velcor.ai/logo.png",
-    "description":"AI-powered revenue infrastructure for B2B companies worldwide.",
-    "areaServed":"Worldwide"
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://velcor.ai/#organization",
+        "name": "Velcor.ai",
+        "url": "https://velcor.ai/",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://velcor.ai/#logo",
+          "url": "https://velcor.ai/logo.png",
+          "contentUrl": "https://velcor.ai/logo.png",
+          "caption": "Velcor.ai"
+        },
+        "image": { "@id": "https://velcor.ai/#logo" },
+        "description": "Velcor.ai builds AI-powered outbound systems, RevOps automation, CRM workflows, and revenue infrastructure for ambitious B2B companies worldwide.",
+        "slogan": "AI Revenue Infrastructure for Modern B2B Growth",
+        "email": "team@velcor.ai",
+        "areaServed": { "@type": "Place", "name": "Worldwide" },
+        "knowsAbout": [
+          "AI revenue infrastructure",
+          "Outbound sales automation",
+          "Revenue operations (RevOps)",
+          "CRM automation",
+          "B2B lead generation",
+          "Go-to-market (GTM) strategy",
+          "B2B SaaS growth",
+          "Mergers and acquisitions deal sourcing",
+          "Private equity deal flow",
+          "AI and deep-tech go-to-market",
+          "Financial services revenue systems"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://velcor.ai/#website",
+        "url": "https://velcor.ai/",
+        "name": "Velcor.ai",
+        "description": "AI Revenue Infrastructure for Modern B2B Growth",
+        "publisher": { "@id": "https://velcor.ai/#organization" },
+        "inLanguage": "en"
+      }
+    ]
   }
   </script>
-
-  <!-- Website Schema -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"Velcor.ai",
-    "url":"https://velcor.ai"
-  }
-  </script>
-
-  <!-- WebPage Schema -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebPage",
-    "name":"Velcor.ai",
-    "url":"https://velcor.ai",
-    "isPartOf":{
-      "@type":"WebSite",
-      "name":"Velcor.ai",
-      "url":"https://velcor.ai"
-    }
-  }
-  </script>
+  <!--app-head-->
 </head>
-<body><div id="root"></div><script type="module" src="/src/main.jsx"></script></body>
+<body><div id="root"><!--app-html--></div><script type="module" src="/src/main.jsx"></script></body>
 </html>

@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import Seo from "../components/Seo";
 import Footer from "../sections/Footer";
 import {
   ArrowRight,
@@ -52,6 +53,12 @@ export default function About() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f6f1e8] text-black">
+      <Seo
+        title="About Velcor.ai"
+        description="Velcor.ai builds AI revenue infrastructure for ambitious B2B companies, combining AI workflows with human expertise across outbound, RevOps and content."
+        path="/about"
+        breadcrumbs={[{ name: "About", path: "/about" }]}
+      />
       <Navbar />
 
       <style>{`

@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://velcor.ai/</loc><priority>1.0</priority></url>
-  <url><loc>https://velcor.ai/services</loc></url>
-  <url><loc>https://velcor.ai/process</loc></url>
-  <url><loc>https://velcor.ai/infrastructure</loc></url>
-  <url><loc>https://velcor.ai/case-studies</loc></url>
-  <url><loc>https://velcor.ai/blog</loc></url>
-  <url><loc>https://velcor.ai/about</loc></url>
-  <url><loc>https://velcor.ai/contact</loc></url>
-  <url><loc>https://velcor.ai/schedule-meeting</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://velcor.ai/services</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/process</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/infrastructure</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/case-studies</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/blog</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/about</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/contact</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/schedule-meeting</loc><priority>0.9</priority></url>
+  <url><loc>https://velcor.ai/privacy-policy</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/terms-of-service</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/blog/proprietary-deal-flow-vs-brokers</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/blog/ai-search-fund-sourcing</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/blog/founder-direct-acquisition</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/blog/compounding-acquisition-engine</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/blog/independent-sponsor-dealflow</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/blog/ai-lower-middle-market-ma</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/blog/pipeline-architecture-marketplaces</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/blog/relationship-capital</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/blog/future-of-revenue-infrastructure</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/case-studies/saas-platform-qualified-calls</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/case-studies/growth-agency-crm-automation</loc><priority>0.7</priority></url>
+  <url><loc>https://velcor.ai/case-studies/b2b-services-content-system</loc><priority>0.7</priority></url>
 </urlset>

@@ -4,6 +4,7 @@
 // Add to your router: <Route path="/legal/terms-of-service" element={<TermsOfService />} />
 
 import { Link } from "react-router-dom";
+import Seo from "../components/Seo";
 import { ArrowLeft } from "lucide-react";
 
 const LAST_UPDATED = "May 17, 2025";
@@ -14,6 +15,12 @@ const SITE        = "https://velcor.ai";
 export default function TermsOfService() {
   return (
     <div className="min-h-screen bg-[#f6f1e8]">
+      <Seo
+        title="Terms of Service"
+        description="The terms governing use of the Velcor.ai website and services."
+        path="/terms-of-service"
+        breadcrumbs={[{ name: "Terms of Service", path: "/terms-of-service" }]}
+      />
 
       {/* Dot-grid texture */}
       <div className="pointer-events-none fixed inset-0 opacity-30 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.13)_1px,transparent_0)] bg-[size:22px_22px]" />

@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import Seo from "../components/Seo";
 import Footer from "../sections/Footer";
 import {
   ArrowRight, ShieldCheck, Activity, Radar, Check,
@@ -281,6 +282,12 @@ export default function Infrastructure() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f6f1e8] text-black">
+      <Seo
+        title="Revenue Infrastructure"
+        description="The AI-powered outbound, RevOps and data infrastructure Velcor.ai deploys to generate predictable pipeline for modern B2B companies."
+        path="/infrastructure"
+        breadcrumbs={[{ name: "Infrastructure", path: "/infrastructure" }]}
+      />
       <Navbar />
 
       {/* HERO */}

@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import BookingPopup from "./components/BookingPopup";
 const Home = lazy(() => import("./pages/Home"));
@@ -17,21 +17,31 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const ScheduleMeeting = lazy(() => import("./pages/ScheduleMeeting"));
+
 export default function App() {
-  return <BrowserRouter><ScrollToTop /><Suspense fallback={<div className="min-h-screen bg-[#f6f1e8]" />}><Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/schedule-meeting" element={<ScheduleMeeting />} />
-    <Route path="/services" element={<ServicesPage />} />
-    <Route path="/about" element={<About />} />
-    <Route path="/contact" element={<Contact />} />
-    {/* <Route path="/pricing" element={<Pricing />} /> */}
-    <Route path="/process" element={<Process />} />
-    <Route path="/infrastructure" element={<Infrastructure />} />
-    <Route path="/case-studies" element={<CaseStudiesPage />} />
-    <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
-    <Route path="/blog" element={<Blog />} /><Route path="/blog/:slug" element={<BlogPost />} />
-    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-    <Route path="/terms-of-service" element={<TermsOfService />} />
-    <Route path="*" element={<NotFound />} />
-  </Routes></Suspense><BookingPopup /></BrowserRouter>;
+  return (
+    <>
+      <ScrollToTop />
+      <Suspense fallback={<div className="min-h-screen bg-[#f6f1e8]" />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/schedule-meeting" element={<ScheduleMeeting />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          {/* <Route path="/pricing" element={<Pricing />} /> */}
+          <Route path="/process" element={<Process />} />
+          <Route path="/infrastructure" element={<Infrastructure />} />
+          <Route path="/case-studies" element={<CaseStudiesPage />} />
+          <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+      <BookingPopup />
+    </>
+  );
 }

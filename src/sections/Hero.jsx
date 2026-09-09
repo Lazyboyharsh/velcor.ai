@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
   Loader2,
@@ -9,6 +10,7 @@ const WEB3FORMS_ACCESS_KEY =
   "c70b2c7c-243d-44d8-adc5-dcfcef157e6f";
 
 export default function Hero() {
+  const navigate = useNavigate();
   const words = [
     "pipeline",
     "revenue",
@@ -117,7 +119,7 @@ export default function Hero() {
         email: "",
       });
 
-      window.location.href = "/schedule-meeting";
+      navigate("/schedule-meeting");
     } catch (error) {
       alert(
         error.message ||

@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import Seo from "../components/Seo";
 import Footer from "../sections/Footer";
 import {
   ArrowRight,
@@ -117,6 +118,12 @@ export default function Process() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f6f1e8] text-black">
+      <Seo
+        title="Our Process"
+        description="How Velcor.ai designs, builds and scales AI revenue infrastructure: discovery, system design, deployment and continuous optimization."
+        path="/process"
+        breadcrumbs={[{ name: "Process", path: "/process" }]}
+      />
       <Navbar />
 
       {/* HERO */}

@@ -3,7 +3,23 @@ import { useEffect, useMemo, useState } from "react";
 
 import Navbar from "../components/Navbar";
 import Footer from "../sections/Footer";
+import Seo from "../components/Seo";
 import { blogPosts } from "../data/blogData";
+
+// Convert a loose "May 2026" style date into an ISO date for structured data.
+const MONTHS = {
+  january: "01", february: "02", march: "03", april: "04", may: "05", june: "06",
+  july: "07", august: "08", september: "09", october: "10", november: "11", december: "12",
+};
+function toIsoDate(dateStr) {
+  if (!dateStr) return undefined;
+  const parts = String(dateStr).trim().toLowerCase().split(/\s+/);
+  const month = parts.find((p) => MONTHS[p]);
+  const year = parts.find((p) => /^\d{4}$/.test(p));
+  if (year && month) return `${year}-${MONTHS[month]}-01`;
+  if (year) return `${year}-01-01`;
+  return undefined;
+}
 
 import {
   ArrowLeft,
@@ -71,6 +87,21 @@ export default function BlogPost() {
 
   return (
     <main className="min-h-screen bg-[#f6f1e8] text-black">
+      <Seo
+        title={post.title}
+        description={post.excerpt}
+        path={`/blog/${post.slug}`}
+        image={post.thumbnail}
+        type="article"
+        article={{
+          publishedTime: toIsoDate(post.date),
+          section: post.category,
+        }}
+        breadcrumbs={[
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ]}
+      />
       {/* Reading Progress */}
       <div className="fixed left-0 top-0 z-[9999] h-[3px] w-full bg-black/5">
         <div

@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { cases } from "./CaseStudiesPage";
+import Seo from "../components/Seo";
 
 export default function CaseStudyDetail() {
   const { slug } = useParams();
@@ -39,6 +40,15 @@ export default function CaseStudyDetail() {
 
   return (
     <main className="min-h-screen bg-[#f6f1e8] text-black">
+      <Seo
+        title={item.title}
+        description={item.desc}
+        path={`/case-studies/${item.slug}`}
+        breadcrumbs={[
+          { name: "Case Studies", path: "/case-studies" },
+          { name: item.title, path: `/case-studies/${item.slug}` },
+        ]}
+      />
       <Navbar />
 
       <section className="relative overflow-hidden px-5 pt-44 pb-20">

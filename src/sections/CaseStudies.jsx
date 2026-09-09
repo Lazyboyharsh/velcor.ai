@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function CaseStudies() {
   const items = [
     {
-      slug: "saas-analytics",
+      slug: "saas-platform-qualified-calls",
       company: "SaaS Analytics Co.",
       headline: "0 → 18 strategy calls in 30 days",
       desc: "Signal-based outbound + AI personalization across email & LinkedIn.",
@@ -12,7 +12,7 @@ export default function CaseStudies() {
       img: "https://images.unsplash.com/photo-1551281044-8b7c7f3a0d1c?q=80&w=1200&auto=format&fit=crop",
     },
     {
-      slug: "dev-agency",
+      slug: "growth-agency-crm-automation",
       company: "Dev Agency",
       headline: "Clean CRM + 3x faster follow-ups",
       desc: "RevOps automation, routing, and meeting prep workflows.",
@@ -20,7 +20,7 @@ export default function CaseStudies() {
       img: "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1200&auto=format&fit=crop",
     },
     {
-      slug: "b2b-services",
+      slug: "b2b-services-content-system",
       company: "B2B Services",
       headline: "Consistent inbound + warm replies",
       desc: "LinkedIn content engine + outbound sync.",

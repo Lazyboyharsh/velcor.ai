@@ -20,7 +20,7 @@ export default function HeroVideoSection() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         video {
           display: block;
           width: 100%;

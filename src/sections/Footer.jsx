@@ -11,7 +11,7 @@ const AI_TOOLS = [
   {
     name: "ChatGPT",
     description: "Summarize Velcor.ai with ChatGPT",
-    logo: " \chatgpt-icon.webp",
+    logo: "/chatgpt-icon.webp",
     url: `https://chatgpt.com/?q=${encodeURIComponent(AI_PROMPT)}`,
   },
   {

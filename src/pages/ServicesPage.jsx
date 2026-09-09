@@ -1,5 +1,8 @@
 import Navbar from "../components/Navbar";
+import Seo from "../components/Seo";
 import Footer from "../sections/Footer";
+import Industries from "../sections/Industries";
+import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Check,
@@ -24,7 +27,6 @@ export default function ServicesPage() {
         "CRM pipeline visibility",
       ],
     },
-
     {
       icon: Workflow,
       title: "Pipeline Architecture",
@@ -36,7 +38,6 @@ export default function ServicesPage() {
         "Pipeline reporting",
       ],
     },
-
     {
       icon: Mail,
       title: "Founder Relationship Infrastructure",
@@ -48,7 +49,6 @@ export default function ServicesPage() {
         "Long-term engagement",
       ],
     },
-
     {
       icon: Database,
       title: "Revenue Intelligence Systems",
@@ -60,7 +60,6 @@ export default function ServicesPage() {
         "Revenue visibility",
       ],
     },
-
     {
       icon: Bot,
       title: "Acquisition Workflow Automation",
@@ -72,7 +71,6 @@ export default function ServicesPage() {
         "Pipeline routing",
       ],
     },
-
     {
       icon: BarChart3,
       title: "Signal-Based Market Intelligence",
@@ -86,10 +84,38 @@ export default function ServicesPage() {
     },
   ];
 
+  const process = [
+    {
+      num: "01",
+      title: "Thesis & ICP Mapping",
+      text: "We map your acquisition thesis or ICP, target criteria, and the buying signals that mark a real opportunity.",
+    },
+    {
+      num: "02",
+      title: "Sourcing Infrastructure",
+      text: "We build enrichment, signal monitoring, and founder-identification systems that surface opportunities continuously.",
+    },
+    {
+      num: "03",
+      title: "Relationship Outreach",
+      text: "We deploy founder-direct, relationship-led outreach and nurture sequences that build trust before intent is visible.",
+    },
+    {
+      num: "04",
+      title: "CRM & Pipeline",
+      text: "We connect CRM, routing, reporting, and pipeline visibility so nothing slips and every opportunity is tracked.",
+    },
+    {
+      num: "05",
+      title: "Operate & Optimize",
+      text: "We run the system, monitor signals, refine messaging, and compound sourcing leverage over time.",
+    },
+  ];
+
   const packages = [
     {
       name: "Proof-of-Value Pilot",
-      price: "30–45 Days",
+      price: "30-45 Days",
       desc: "A focused engagement designed to validate infrastructure performance before a long-term partnership.",
       features: [
         "Founder conversations",
@@ -98,7 +124,6 @@ export default function ServicesPage() {
         "Performance review",
       ],
     },
-
     {
       name: "Monthly Operating Retainer",
       price: "Most Popular",
@@ -110,7 +135,6 @@ export default function ServicesPage() {
         "Infrastructure optimization",
       ],
     },
-
     {
       name: "Performance-Aligned Hybrid",
       price: "Select Partners",
@@ -126,10 +150,15 @@ export default function ServicesPage() {
 
   return (
     <main className="min-h-screen bg-[#f6f1e8] text-black">
+      <Seo
+        title="AI Revenue Systems & Services"
+        description="Outbound systems, RevOps automation, CRM workflows and content engines that build predictable B2B pipeline. Explore Velcor.ai's revenue infrastructure services."
+        path="/services"
+        breadcrumbs={[{ name: "Services", path: "/services" }]}
+      />
       <Navbar />
 
       {/* HERO */}
-
       <section className="relative overflow-hidden px-5 pt-44 pb-24 text-center">
         <div className="absolute inset-0 opacity-[0.35] bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.12)_1px,transparent_0)] bg-[size:22px_22px]" />
 
@@ -155,240 +184,200 @@ export default function ServicesPage() {
             Not campaigns. Not agencies. Infrastructure.
           </p>
 
-          <a
-            href="/schedule-meeting"
+          <Link
+            to="/schedule-meeting"
             className="mt-9 inline-flex items-center gap-2 rounded-xl bg-black px-7 py-4 text-sm font-semibold text-white transition hover:bg-blue-500 hover:text-white"
           >
             Book Strategy Call
             <ArrowRight size={15} />
-          </a>
+          </Link>
         </div>
       </section>
 
       {/* SERVICES */}
+      <section className="px-5 pb-32">
+        <div className="mx-auto mb-20 max-w-4xl text-center">
+          <h2 className="text-5xl font-semibold leading-[0.95] tracking-[-0.08em] md:text-7xl">
+            Infrastructure systems
+            <span className="block font-serif italic font-normal">
+              that compound over time
+            </span>
+          </h2>
 
-   {/* SERVICES */}
-
-<section className="px-5 pb-32">
-  <div className="mx-auto mb-20 max-w-4xl text-center">
-    <h2 className="text-5xl font-semibold leading-[0.95] tracking-[-0.08em] md:text-7xl">
-      Infrastructure systems
-      <span className="block font-serif italic font-normal">
-        that compound over time
-      </span>
-    </h2>
-
-    <p className="mx-auto mt-8 max-w-2xl text-[18px] leading-8 text-black/55">
-      Every engagement is designed around long-term relationship
-      development, pipeline visibility, and proprietary opportunity
-      creation.
-    </p>
-  </div>
-
-  <div className="mx-auto grid max-w-7xl items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3">
-    {services.map((service) => (
-      <div
-        key={service.title}
-        className="group flex h-full flex-col rounded-[2rem] border border-black/10 bg-white/70 p-8 shadow-xl shadow-black/[0.04] backdrop-blur transition-all duration-500 hover:-translate-y-2 hover:bg-white hover:shadow-2xl"
-      >
-        <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-blue-400">
-          <service.icon size={24} />
+          <p className="mx-auto mt-8 max-w-2xl text-[18px] leading-8 text-black/55">
+            Every engagement is designed around long-term relationship
+            development, pipeline visibility, and proprietary opportunity
+            creation.
+          </p>
         </div>
 
-        <h3 className="min-h-[78px] text-[1.65rem] font-semibold leading-[1.15] tracking-[-0.03em] text-black">
-          {service.title}
-        </h3>
-
-        <p className="mt-5 min-h-[150px] text-[15px] leading-8 text-black/60">
-          {service.desc}
-        </p>
-
-        <ul className="mt-auto space-y-4 pt-6">
-          {service.points.map((p) => (
-            <li
-              key={p}
-              className="flex items-center gap-3 text-[15px] font-medium text-black/70"
+        <div className="mx-auto grid max-w-7xl items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((service) => (
+            <div
+              key={service.title}
+              className="group flex h-full flex-col rounded-[2rem] border border-black/10 bg-white/70 p-8 shadow-xl shadow-black/[0.04] backdrop-blur transition-all duration-500 hover:-translate-y-2 hover:bg-white hover:shadow-2xl"
             >
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-400 text-black">
-                <Check size={12} />
-              </span>
+              <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-blue-400">
+                <service.icon size={24} />
+              </div>
 
-              {p}
-            </li>
+              <h3 className="min-h-[78px] text-[1.65rem] font-semibold leading-[1.15] tracking-[-0.03em] text-black">
+                {service.title}
+              </h3>
+
+              <p className="mt-5 min-h-[150px] text-[15px] leading-8 text-black/60">
+                {service.desc}
+              </p>
+
+              <ul className="mt-auto space-y-4 pt-6">
+                {service.points.map((p) => (
+                  <li
+                    key={p}
+                    className="flex items-center gap-3 text-[15px] font-medium text-black/70"
+                  >
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-400 text-black">
+                      <Check size={12} />
+                    </span>
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
-        </ul>
-      </div>
-    ))}
-  </div>
-</section>
-            {/* HOW WE BUILD INFRASTRUCTURE */}
+        </div>
+      </section>
 
+      {/* HOW WE BUILD INFRASTRUCTURE */}
       <section className="border-y border-black/10 bg-white/45 px-5 py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-4xl text-center">
+            <p className="mx-auto mb-5 w-fit rounded-full border border-black/10 bg-white/60 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-black/55">
+              The Process
+            </p>
+
             <h2 className="text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
               How we build
               <span className="block font-serif italic font-normal">
-                infrastructure
+                your infrastructure
               </span>
             </h2>
 
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-black/60">
-              Our process is designed to create long-term sourcing leverage,
-              operational visibility, and founder relationship infrastructure.
+              A repeatable path from strategy to a running system, designed to
+              create long-term sourcing leverage and operational visibility.
             </p>
           </div>
-<div className="mt-20 grid gap-8 md:grid-cols-2 lg:grid-cols-5">
-  {[
-    {
-      title: "PE Firms",
-      text: "Lower middle-market firms seeking proprietary acquisition opportunities.",
-    },
 
-    {
-      title: "Independent Sponsors",
-      text: "Operators building scalable sourcing infrastructure beyond personal networks.",
-    },
+          <div className="mt-20 grid gap-6 md:grid-cols-2 lg:grid-cols-5">
+            {process.map((step) => (
+              <div
+                key={step.num}
+                className="group relative flex flex-col rounded-[2rem] border border-black/10 bg-white/70 p-7 shadow-lg shadow-black/[0.04] transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
+              >
+                <span className="font-serif text-4xl italic leading-none text-black/20 transition-colors duration-300 group-hover:text-blue-500/40">
+                  {step.num}
+                </span>
 
-    {
-      title: "Search Funds",
-      text: "Searchers using systems and automation to improve acquisition sourcing.",
-    },
+                <h3 className="mt-6 text-[1.15rem] font-semibold leading-[1.2] tracking-[-0.02em] text-black">
+                  {step.title}
+                </h3>
 
-    {
-      title: "Family Offices",
-      text: "Permanent capital operators building founder-direct relationships.",
-    },
-
-    {
-      title: "Marketplaces",
-      text: "Platforms scaling seller acquisition and buyer engagement infrastructure.",
-    },
-  ].map((item) => (
-    <div
-      key={item.title}
-      className="group flex min-h-[280px] flex-col rounded-[2rem] border border-black/10 bg-white/70 p-8 shadow-lg shadow-black/[0.04] transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
-    >
-      {/* Fixed Heading Height */}
-      <h3 className="min-h-[80px] text-[1.6rem] font-semibold leading-[1.15] tracking-[-0.03em] text-black">
-        {item.title}
-      </h3>
-
-      {/* Fixed Description Area */}
-      <p className="mt-5 text-[15px] leading-8 text-black/60">
-        {item.text}
-      </p>
-
-      {/* Bottom Accent */}
-      <div className="mt-auto pt-8">
-        <div className="h-px w-12 bg-black/10"></div>
-      </div>
-    </div>
-  ))}
-</div>
+                <p className="mt-3 text-[14px] leading-7 text-black/60">
+                  {step.text}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* BUILT FOR */}
+      <section className="px-5 py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center">
+            <h2 className="text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
+              Designed for firms
+              <span className="block font-serif italic font-normal">
+                that acquire and grow
+              </span>
+            </h2>
 
-      {/* BUILT FOR */}
-
-{/* BUILT FOR */}
-
-<section className="px-5 py-24">
-  <div className="mx-auto max-w-7xl">
-    <div className="text-center">
-      {/* <p className="mx-auto mb-5 w-fit rounded-full border border-black/10 bg-white/60 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-black/55">
-        Built For Operators
-      </p> */}
-
-      <h2 className="text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
-        Designed for firms
-        <span className="block font-serif italic font-normal">
-          that acquire and grow
-        </span>
-      </h2>
-
-      <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-black/60">
-        Purpose-built infrastructure for acquisition-focused organizations.
-      </p>
-    </div>
-
-    <div className="mt-20 grid gap-6 lg:grid-cols-12">
-      {/* Large Featured Card */}
-      <div className="rounded-[2rem] border border-black/10 bg-white/60 p-8 shadow-xl shadow-black/5 lg:col-span-5">
-        <span className="text-sm font-semibold uppercase tracking-wide text-blue-500">
-          Primary Users
-        </span>
-
-        <h3 className="mt-4 text-3xl font-semibold tracking-tight">
-          Private Equity &
-          <br />
-          Independent Sponsors
-        </h3>
-
-        <p className="mt-5 max-w-md text-base leading-8 text-black/60">
-          Proprietary sourcing infrastructure, founder-direct outreach,
-          relationship management, and acquisition intelligence systems.
-        </p>
-
-        <div className="mt-8 flex flex-wrap gap-2">
-          {[
-            "Deal Flow",
-            "Founder Outreach",
-            "CRM Systems",
-            "Pipeline Visibility",
-          ].map((item) => (
-            <span
-              key={item}
-              className="rounded-full border border-black/10 bg-[#f6f1e8] px-3 py-2 text-xs font-medium"
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Right Side Cards */}
-      <div className="grid gap-6 lg:col-span-7 lg:grid-cols-2">
-        {[
-          {
-            title: "Search Funds",
-            text: "Automated sourcing and acquisition workflows.",
-          },
-          {
-            title: "Family Offices",
-            text: "Founder-direct relationship infrastructure.",
-          },
-          {
-            title: "Marketplaces",
-            text: "Seller acquisition and buyer engagement systems.",
-          },
-          {
-            title: "Acquisition Operators",
-            text: "Scalable pipeline and opportunity management.",
-          },
-        ].map((item) => (
-          <div
-            key={item.title}
-            className="rounded-[2rem] border border-black/10 bg-white/60 p-7 shadow-lg shadow-black/5"
-          >
-            <h3 className="text-xl font-semibold">
-              {item.title}
-            </h3>
-
-            <p className="mt-4 text-sm leading-7 text-black/60">
-              {item.text}
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-black/60">
+              Purpose-built infrastructure for acquisition-focused organizations.
             </p>
           </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
+
+          <div className="mt-20 grid gap-6 lg:grid-cols-12">
+            {/* Large Featured Card */}
+            <div className="rounded-[2rem] border border-black/10 bg-white/60 p-8 shadow-xl shadow-black/5 lg:col-span-5">
+              <span className="text-sm font-semibold uppercase tracking-wide text-blue-500">
+                Primary Users
+              </span>
+
+              <h3 className="mt-4 text-3xl font-semibold tracking-tight">
+                Private Equity &
+                <br />
+                Independent Sponsors
+              </h3>
+
+              <p className="mt-5 max-w-md text-base leading-8 text-black/60">
+                Proprietary sourcing infrastructure, founder-direct outreach,
+                relationship management, and acquisition intelligence systems.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-2">
+                {[
+                  "Deal Flow",
+                  "Founder Outreach",
+                  "CRM Systems",
+                  "Pipeline Visibility",
+                ].map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-black/10 bg-[#f6f1e8] px-3 py-2 text-xs font-medium"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Side Cards */}
+            <div className="grid gap-6 lg:col-span-7 lg:grid-cols-2">
+              {[
+                {
+                  title: "Search Funds",
+                  text: "Automated sourcing and acquisition workflows.",
+                },
+                {
+                  title: "Family Offices",
+                  text: "Founder-direct relationship infrastructure.",
+                },
+                {
+                  title: "Marketplaces",
+                  text: "Seller acquisition and buyer engagement systems.",
+                },
+                {
+                  title: "Acquisition Operators",
+                  text: "Scalable pipeline and opportunity management.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-[2rem] border border-black/10 bg-white/60 p-7 shadow-lg shadow-black/5"
+                >
+                  <h3 className="text-xl font-semibold">{item.title}</h3>
+                  <p className="mt-4 text-sm leading-7 text-black/60">
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ENGAGEMENT MODELS */}
-
       <section className="border-y border-black/10 bg-white/45 px-5 py-24">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
@@ -404,7 +393,7 @@ export default function ServicesPage() {
             </h2>
 
             <p className="mt-6 max-w-xl text-lg leading-8 text-black/60">
-              Whether you're validating a new sourcing strategy or building a
+              Whether you are validating a new sourcing strategy or building a
               long-term acquisition engine, we structure engagements around
               infrastructure ownership and measurable outcomes.
             </p>
@@ -418,16 +407,13 @@ export default function ServicesPage() {
               >
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div>
-                    <h3 className="text-2xl font-semibold">
-                      {item.name}
-                    </h3>
-
+                    <h3 className="text-2xl font-semibold">{item.name}</h3>
                     <p className="mt-2 text-sm leading-6 text-black/60">
                       {item.desc}
                     </p>
                   </div>
 
-                  <span className="w-fit rounded-full bg-black px-4 py-2 text-xs font-semibold uppercase tracking-wide text-blue-400">
+                  <span className="w-fit shrink-0 rounded-full bg-black px-4 py-2 text-xs font-semibold uppercase tracking-wide text-blue-400">
                     {item.price}
                   </span>
                 </div>
@@ -449,8 +435,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-
-      <section className="px-5 pb-24 text-center">
+      <section className="px-5 py-24 text-center">
         <div className="mx-auto max-w-5xl rounded-[2rem] border border-black/10 bg-black p-10 text-white shadow-2xl shadow-black/20 md:p-14">
           <h2 className="text-4xl font-semibold tracking-[-0.05em] md:text-6xl">
             Build Revenue Infrastructure
@@ -461,18 +446,20 @@ export default function ServicesPage() {
 
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/65">
             If proprietary deal flow is a strategic priority for your firm,
-            let's discuss the systems required to support it.
+            let us discuss the systems required to support it.
           </p>
 
-          <a
-            href="/schedule-meeting"
+          <Link
+            to="/schedule-meeting"
             className="mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-7 py-4 text-sm font-semibold text-black transition hover:bg-blue-400"
           >
             Book Strategy Call
             <ArrowRight size={15} />
-          </a>
+          </Link>
         </div>
       </section>
+
+      <Industries />
 
       <Footer />
     </main>

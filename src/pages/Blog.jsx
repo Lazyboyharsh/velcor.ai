@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import Seo from "../components/Seo";
 import Footer from "../sections/Footer";
 import { ArrowRight, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -20,6 +21,12 @@ export default function Blog() {
 
   return (
     <main className="min-h-screen bg-[#f6f1e8] text-black">
+      <Seo
+        title="Blog"
+        description="Insights on AI revenue infrastructure, outbound, RevOps, deal flow and go-to-market strategy from the Velcor.ai team."
+        path="/blog"
+        breadcrumbs={[{ name: "Blog", path: "/blog" }]}
+      />
       <Navbar />
 
       <style>

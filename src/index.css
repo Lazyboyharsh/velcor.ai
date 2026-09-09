@@ -12,6 +12,23 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Prevent any decorative/absolute element from causing horizontal scroll on
+   small screens. `clip` (not `hidden`) is used so it does NOT create a scroll
+   container and therefore does not break `position: sticky` descendants. */
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+/* Media should never exceed its container on small screens */
+img,
+video,
+iframe,
+svg {
+  max-width: 100%;
+}
+
 /* Scroll reveal animations */
 @keyframes revealUp {
   from {
@@ -155,5 +172,15 @@ html {
 
   100% {
     transform: translateX(calc(-50% - 10px));
+  }
+}
+/* Services video panel: clipped shape on desktop only. Done in CSS (not JS)
+   so server and client render identically (no hydration mismatch). */
+.services-video-clip {
+  border-radius: 32px;
+}
+@media (min-width: 768px) {
+  .services-video-clip {
+    clip-path: polygon(0 0, 92% 0, 100% 12%, 100% 100%, 30% 100%, 22% 88%, 0 88%);
   }
 }

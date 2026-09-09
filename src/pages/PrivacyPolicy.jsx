@@ -4,6 +4,7 @@
 // Add to your router: <Route path="/legal/privacy-policy" element={<PrivacyPolicy />} />
 
 import { Link } from "react-router-dom";
+import Seo from "../components/Seo";
 import { ArrowLeft } from "lucide-react";
 
 const LAST_UPDATED = "May 17, 2025";
@@ -14,6 +15,12 @@ const SITE        = "https://velcor.ai";
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-[#f6f1e8]">
+      <Seo
+        title="Privacy Policy"
+        description="How Velcor.ai collects, uses and protects your information."
+        path="/privacy-policy"
+        breadcrumbs={[{ name: "Privacy Policy", path: "/privacy-policy" }]}
+      />
 
       {/* Dot-grid texture — matches Hero / Testimonials */}
       <div className="pointer-events-none fixed inset-0 opacity-30 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.13)_1px,transparent_0)] bg-[size:22px_22px]" />

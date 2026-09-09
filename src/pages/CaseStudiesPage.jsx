@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import Seo from "../components/Seo";
 import Footer from "../sections/Footer";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -51,6 +52,12 @@ export const cases = [
 export default function CaseStudiesPage() {
   return (
     <main className="min-h-screen bg-[#f6f1e8] text-black">
+      <Seo
+        title="Case Studies"
+        description="Real revenue systems Velcor.ai has built: outbound campaigns, CRM automation and content engines that generated qualified pipeline for B2B clients."
+        path="/case-studies"
+        breadcrumbs={[{ name: "Case Studies", path: "/case-studies" }]}
+      />
       <Navbar />
 
       <section className="px-5 pt-40 pb-20 text-center">

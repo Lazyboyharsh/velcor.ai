@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import Seo from "../components/Seo";
 
 import Navbar from "../components/Navbar";
 import Footer from "../sections/Footer";
@@ -120,6 +122,12 @@ export default function Contact() {
 
   return (
     <main className="min-h-screen bg-[#f6f1e8] text-black">
+      <Seo
+        title="Contact"
+        description="Talk to Velcor.ai about your pipeline, outbound and revenue infrastructure. Share your offer and ICP and we'll map a pilot system for your growth."
+        path="/contact"
+        breadcrumbs={[{ name: "Contact", path: "/contact" }]}
+      />
       <Navbar />
 
       <section className="px-5 pb-24 pt-40">
@@ -165,8 +173,8 @@ export default function Contact() {
                 </div>
               </a>
 
-              <a
-                href="/schedule-meeting"
+              <Link
+                to="/schedule-meeting"
                 className="flex items-center gap-4 rounded-2xl border border-black/10 bg-white/60 p-4 backdrop-blur transition hover:-translate-y-1 hover:bg-white"
               >
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-500 text-white">
@@ -182,7 +190,7 @@ export default function Contact() {
                     Book a free consultation
                   </p>
                 </div>
-              </a>
+              </Link>
 
               <div className="flex items-center gap-4 rounded-2xl border border-black/10 bg-white/60 p-4 backdrop-blur">
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-500 text-white">

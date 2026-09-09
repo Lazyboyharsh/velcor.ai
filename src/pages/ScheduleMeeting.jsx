@@ -1,4 +1,5 @@
 import { ArrowLeft, CalendarDays, Clock3, Video } from "lucide-react";
+import Seo from "../components/Seo";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../sections/Footer";
@@ -8,6 +9,12 @@ const CALENDLY_URL = "https://calendly.com/velcor-ai-team/30min";
 export default function ScheduleMeeting() {
   return (
     <main className="min-h-screen bg-[#f6f1e8] text-black">
+      <Seo
+        title="Schedule a Meeting"
+        description="Book a focused 30-minute strategy call with the Velcor.ai team to map your ICP, outbound workflow and revenue infrastructure."
+        path="/schedule-meeting"
+        breadcrumbs={[{ name: "Schedule a Meeting", path: "/schedule-meeting" }]}
+      />
       <Navbar />
       <section className="relative overflow-hidden px-5 pb-20 pt-32 md:pt-40">
         <div className="absolute inset-0 opacity-[0.35] bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.12)_1px,transparent_0)] bg-[size:22px_22px]" />
