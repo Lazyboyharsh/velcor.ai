@@ -1,13 +1,66 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  ArrowRight,
-  Loader2,
-  CheckCircle2,
-} from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 
+// Prefer an env variable; the fallback keeps the current behaviour.
 const WEB3FORMS_ACCESS_KEY =
+  import.meta.env?.VITE_WEB3FORMS_KEY ||
   "c70b2c7c-243d-44d8-adc5-dcfcef157e6f";
+
+// Free-mail and disposable providers are rejected: we want work emails only.
+const BLOCKED_DOMAINS = new Set([
+  "gmail.com",
+  "googlemail.com",
+  "yahoo.com",
+  "yahoo.co.in",
+  "outlook.com",
+  "hotmail.com",
+  "icloud.com",
+  "aol.com",
+  "proton.me",
+  "protonmail.com",
+  "live.com",
+  "msn.com",
+  "rediffmail.com",
+  "gmx.com",
+  "zoho.com",
+  "mailinator.com",
+  "10minutemail.com",
+  "guerrillamail.com",
+  "tempmail.com",
+  "yopmail.com",
+  "trashmail.com",
+  "sharklasers.com",
+  "getnada.com",
+  "throwawaymail.com",
+]);
+
+const MIN_FILL_TIME_MS = 3000;
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+const getEmailDomain = (email) =>
+  email.split("@")[1]?.toLowerCase().trim();
+
+const normalizeWebsite = (value) => {
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+
+  try {
+    const url = new URL(
+      /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`
+    );
+
+    if (!url.hostname.includes(".")) return null;
+    if (BLOCKED_DOMAINS.has(url.hostname.replace(/^www\./, ""))) {
+      return null;
+    }
+
+    return url.hostname.toLowerCase().replace(/^www\./, "");
+  } catch {
+    return null;
+  }
+};
 
 export default function Hero() {
   const navigate = useNavigate();
@@ -26,13 +79,19 @@ export default function Hero() {
   });
 
   const sectionRef = useRef(null);
+  const mountTime = useRef(Date.now());
 
   const [quickForm, setQuickForm] = useState({
-    email: "",
     name: "",
+    email: "",
+    website: "",
   });
 
+  // Honeypot: real visitors never see or fill this field.
+  const [honeypot, setHoneypot] = useState("");
+
   const [quickLoading, setQuickLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -68,6 +127,8 @@ export default function Hero() {
   const handleQuickChange = (e) => {
     const { name, value } = e.target;
 
+    if (error) setError("");
+
     setQuickForm((current) => ({
       ...current,
       [name]: value,
@@ -78,6 +139,41 @@ export default function Hero() {
     e.preventDefault();
 
     if (quickLoading) return;
+
+    setError("");
+
+    // Bot checks. Pretend success so bots don't learn what failed.
+    if (
+      honeypot ||
+      Date.now() - mountTime.current < MIN_FILL_TIME_MS
+    ) {
+      navigate("/schedule-meeting");
+      return;
+    }
+
+    const email = quickForm.email.trim();
+    const emailDomain = getEmailDomain(email);
+
+    if (!EMAIL_REGEX.test(email) || !emailDomain) {
+      setError("Enter a valid work email address.");
+      return;
+    }
+
+    if (BLOCKED_DOMAINS.has(emailDomain)) {
+      setError(
+        "Use your work email. Personal and temporary addresses aren't accepted."
+      );
+      return;
+    }
+
+    const siteDomain = normalizeWebsite(quickForm.website);
+
+    if (!siteDomain) {
+      setError(
+        "Enter your company website, for example velcor.ai."
+      );
+      return;
+    }
 
     setQuickLoading(true);
 
@@ -96,10 +192,17 @@ export default function Hero() {
             access_key: WEB3FORMS_ACCESS_KEY,
             subject: "New Quick Call Request - Velcor.ai",
             from_name: "Velcor.ai Website",
-            name: quickForm.name,
-            email: quickForm.email,
+            name: quickForm.name.trim(),
+            email,
+            company_website: siteDomain,
+            email_matches_website:
+              emailDomain === siteDomain ||
+              emailDomain.endsWith("." + siteDomain)
+                ? "yes"
+                : "no",
             request_type: "Strategy Call Request",
             source: "Velcor.ai Homepage Hero",
+            botcheck: "", // Web3Forms' own honeypot field
             message:
               "New strategy call request from the Velcor.ai homepage.",
           }),
@@ -117,18 +220,22 @@ export default function Hero() {
       setQuickForm({
         name: "",
         email: "",
+        website: "",
       });
 
       navigate("/schedule-meeting");
-    } catch (error) {
-      alert(
-        error.message ||
+    } catch (err) {
+      setError(
+        err.message ||
           "Unable to send request. Please try again."
       );
     } finally {
       setQuickLoading(false);
     }
   };
+
+  const fieldClass =
+    "h-[48px] w-full min-w-0 rounded-lg border border-black/10 bg-white/80 px-4 text-xs text-black shadow-sm outline-none placeholder:text-black/35 focus:border-blue-400 md:rounded-none md:border-0 md:bg-transparent md:shadow-none";
 
   return (
     <section
@@ -325,94 +432,64 @@ export default function Hero() {
           qualified pipeline.
         </p>
 
-        <div className="fu-3 mx-auto mt-12 w-full max-w-lg">
+        <div className="fu-3 mx-auto mt-12 w-full max-w-2xl">
           <form
             onSubmit={handleQuickSubmit}
-            className="group/form hidden items-center overflow-hidden rounded-xl border border-black/8 bg-white/80 shadow-lg shadow-black/5 backdrop-blur-sm ring-1 ring-white/50 transition-all duration-500 hover:border-blue-200/30 hover:bg-white/90 hover:shadow-xl focus-within:ring-blue-100/40 md:flex"
+            noValidate
+            className="flex flex-col gap-3"
           >
-            <input
-              type="email"
-              name="email"
-              required
-              autoComplete="email"
-              value={quickForm.email}
-              onChange={handleQuickChange}
-              placeholder="Work email"
-              className="h-[48px] min-w-0 flex-1 bg-transparent pl-5 pr-3 text-xs text-black outline-none placeholder:text-black/30"
-            />
-
-            <div className="h-5 w-px bg-black/10" />
-
+            {/* Honeypot field, hidden from people and screen readers */}
             <input
               type="text"
-              name="name"
-              required
-              autoComplete="name"
-              value={quickForm.name}
-              onChange={handleQuickChange}
-              placeholder="Full name"
-              className="h-[48px] min-w-0 flex-1 bg-transparent pl-4 pr-3 text-xs text-black outline-none placeholder:text-black/30"
+              name="company_fax"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="absolute -left-[9999px] h-0 w-0 opacity-0"
             />
 
-            <div className="p-1.5">
-              <button
-                type="submit"
-                disabled={quickLoading}
-                className="btn-pulse group/btn flex h-[40px] items-center gap-2 rounded-lg bg-blue-500 px-5 text-xs font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-70"
-              >
-                {quickLoading ? (
-                  <>
-                    <Loader2
-                      size={14}
-                      className="animate-spin"
-                    />
+            <div className="flex flex-col gap-3 md:grid md:grid-cols-3 md:gap-0 md:divide-x md:divide-black/10 md:overflow-hidden md:rounded-xl md:border md:border-black/10 md:bg-white/80 md:shadow-lg md:shadow-black/5 md:ring-1 md:ring-white/50 md:backdrop-blur-sm md:transition-all md:duration-500 md:focus-within:border-blue-200 md:focus-within:bg-white/90 md:hover:shadow-xl">
+              <input
+                type="text"
+                name="name"
+                required
+                autoComplete="name"
+                value={quickForm.name}
+                onChange={handleQuickChange}
+                placeholder="Full name"
+                className={fieldClass}
+              />
 
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    Request call
+              <input
+                type="email"
+                name="email"
+                required
+                autoComplete="email"
+                value={quickForm.email}
+                onChange={handleQuickChange}
+                placeholder="Work email"
+                className={fieldClass}
+              />
 
-                    <ArrowRight
-                      size={12}
-                      className="transition-transform duration-300 group-hover/btn:translate-x-1"
-                    />
-                  </>
-                )}
-              </button>
+              <input
+                type="text"
+                name="website"
+                required
+                autoComplete="url"
+                inputMode="url"
+                value={quickForm.website}
+                onChange={handleQuickChange}
+                placeholder="Company website"
+                className={fieldClass}
+              />
             </div>
-          </form>
-
-          <form
-            onSubmit={handleQuickSubmit}
-            className="flex flex-col gap-4 md:hidden"
-          >
-            <input
-              type="email"
-              name="email"
-              required
-              autoComplete="email"
-              value={quickForm.email}
-              onChange={handleQuickChange}
-              placeholder="Work email"
-              className="h-[48px] w-full rounded-lg border border-black/10 bg-white/80 px-4 text-xs text-black shadow-sm outline-none placeholder:text-black/35 focus:border-blue-400"
-            />
-
-            <input
-              type="text"
-              name="name"
-              required
-              autoComplete="name"
-              value={quickForm.name}
-              onChange={handleQuickChange}
-              placeholder="Full name"
-              className="h-[48px] w-full rounded-lg border border-black/10 bg-white/80 px-4 text-xs text-black shadow-sm outline-none placeholder:text-black/35 focus:border-blue-400"
-            />
 
             <button
               type="submit"
               disabled={quickLoading}
-              className="btn-pulse group/btn flex h-[48px] w-full items-center justify-center gap-2 rounded-lg bg-blue-500 text-xs font-semibold text-white shadow-md shadow-blue-500/15 transition-all duration-300 hover:scale-[1.02] hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-70"
+              className="btn-pulse group/btn mx-auto flex h-[48px] w-full items-center justify-center gap-2 rounded-lg bg-blue-500 px-8 text-xs font-semibold text-white shadow-md shadow-blue-500/15 transition-all duration-300 hover:scale-[1.02] hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-70 md:w-auto"
             >
               {quickLoading ? (
                 <>
@@ -425,12 +502,24 @@ export default function Hero() {
                 </>
               ) : (
                 <>
-                  <CheckCircle2 size={14} />
-
                   Request call
+
+                  <ArrowRight
+                    size={12}
+                    className="transition-transform duration-300 group-hover/btn:translate-x-1"
+                  />
                 </>
               )}
             </button>
+
+            {error && (
+              <p
+                role="alert"
+                className="text-xs text-red-600"
+              >
+                {error}
+              </p>
+            )}
           </form>
         </div>
       </div>
