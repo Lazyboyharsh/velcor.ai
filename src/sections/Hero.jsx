@@ -7,8 +7,27 @@ const WEB3FORMS_ACCESS_KEY =
   import.meta.env?.VITE_WEB3FORMS_KEY ||
   "c70b2c7c-243d-44d8-adc5-dcfcef157e6f";
 
-// Free-mail and disposable providers are rejected: we want work emails only.
-const BLOCKED_DOMAINS = new Set([
+// Throwaway inboxes used almost only by spammers. Gmail, Yahoo etc. are allowed.
+const DISPOSABLE_DOMAINS = new Set([
+  "mailinator.com",
+  "10minutemail.com",
+  "guerrillamail.com",
+  "tempmail.com",
+  "temp-mail.org",
+  "yopmail.com",
+  "trashmail.com",
+  "sharklasers.com",
+  "getnada.com",
+  "throwawaymail.com",
+  "maildrop.cc",
+  "dispostable.com",
+  "fakeinbox.com",
+  "mohmal.com",
+]);
+
+// Personal mail providers. Allowed as email, but not accepted as a "company website",
+// and used to label leads as personal vs work.
+const PERSONAL_DOMAINS = new Set([
   "gmail.com",
   "googlemail.com",
   "yahoo.com",
@@ -24,15 +43,6 @@ const BLOCKED_DOMAINS = new Set([
   "rediffmail.com",
   "gmx.com",
   "zoho.com",
-  "mailinator.com",
-  "10minutemail.com",
-  "guerrillamail.com",
-  "tempmail.com",
-  "yopmail.com",
-  "trashmail.com",
-  "sharklasers.com",
-  "getnada.com",
-  "throwawaymail.com",
 ]);
 
 const MIN_FILL_TIME_MS = 3000;
@@ -52,7 +62,7 @@ const normalizeWebsite = (value) => {
     );
 
     if (!url.hostname.includes(".")) return null;
-    if (BLOCKED_DOMAINS.has(url.hostname.replace(/^www\./, ""))) {
+    if (PERSONAL_DOMAINS.has(url.hostname.replace(/^www\./, ""))) {
       return null;
     }
 
@@ -155,14 +165,25 @@ export default function Hero() {
     const emailDomain = getEmailDomain(email);
 
     if (!EMAIL_REGEX.test(email) || !emailDomain) {
-      setError("Enter a valid work email address.");
+      setError("Enter a valid email address.");
       return;
     }
 
-    if (BLOCKED_DOMAINS.has(emailDomain)) {
+    if (DISPOSABLE_DOMAINS.has(emailDomain)) {
       setError(
-        "Use your work email. Personal and temporary addresses aren't accepted."
+        "Temporary email addresses aren't accepted. Use a different email."
       );
+      return;
+    }
+
+    // Names containing links or digits-only text are almost always spam.
+    const cleanName = quickForm.name.trim();
+    if (
+      cleanName.length < 2 ||
+      /https?:\/\/|www\.|<|>/i.test(cleanName) ||
+      /^[\d\W]+$/.test(cleanName)
+    ) {
+      setError("Enter your real name.");
       return;
     }
 
@@ -195,6 +216,9 @@ export default function Hero() {
             name: quickForm.name.trim(),
             email,
             company_website: siteDomain,
+            email_type: PERSONAL_DOMAINS.has(emailDomain)
+              ? "personal"
+              : "work",
             email_matches_website:
               emailDomain === siteDomain ||
               emailDomain.endsWith("." + siteDomain)
@@ -469,7 +493,7 @@ export default function Hero() {
                 autoComplete="email"
                 value={quickForm.email}
                 onChange={handleQuickChange}
-                placeholder="Work email"
+                placeholder="Email"
                 className={fieldClass}
               />
 
