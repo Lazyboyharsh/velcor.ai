@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import BookingPopup from "./components/BookingPopup";
-import LeadPopup from "./components/LeadPopup";
+import LeadPopup from "./components/Leadpopup";
 const Home = lazy(() => import("./pages/Home"));
 const ServicesPage = lazy(() => import("./pages/ServicesPage"));
 const CaseStudiesPage = lazy(() => import("./pages/CaseStudiesPage"));
