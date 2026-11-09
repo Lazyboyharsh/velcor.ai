@@ -55,7 +55,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const FOCUS_OPTIONS = [
   "Outbound",
   "RevOps",
-  "Content",
+  "CRM automation",
   "All of the above",
 ];
 
