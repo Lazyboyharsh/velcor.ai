@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Check, Loader2, X } from "lucide-react";
 
 /* ------------------------------------------------------------------ */
@@ -10,9 +10,8 @@ const WEB3FORMS_ACCESS_KEY =
   import.meta.env?.VITE_WEB3FORMS_KEY ||
   "c70b2c7c-243d-44d8-adc5-dcfcef157e6f";
 
-const STORAGE_KEY = "velcor_lead_popup";
-const SNOOZE_DAYS = 7; // after closing, don't show again for this long
-const FALLBACK_DELAY_MS = 10000; // auto-open after 10s
+const HIDE_ON_PATHS = ["/schedule-meeting"]; // pages where the popup never opens
+const FALLBACK_DELAY_MS = 5000; // auto-open after 10s
 const MIN_FILL_TIME_MS = 4000;
 const TOTAL_STEPS = 5;
 
@@ -88,48 +87,24 @@ const cleanHost = (value) => {
 const looksLikeSpamText = (text) =>
   /https?:\/\/|www\.|<|>/i.test(text);
 
-const readSnooze = () => {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return false;
-    const { until } = JSON.parse(raw);
-    return typeof until === "number" && Date.now() < until;
-  } catch {
-    return false;
-  }
-};
-
-const writeSnooze = (days) => {
-  try {
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({
-        until: Date.now() + days * 24 * 60 * 60 * 1000,
-      })
-    );
-  } catch {
-    /* storage can be blocked; ignore */
-  }
-};
-
 /* ------------------------------------------------------------------ */
 /* Component                                                           */
 /* ------------------------------------------------------------------ */
 
 /**
  * Props:
- *  - exitIntent (default true): open when the cursor leaves through the top of the window
- *  - fallbackDelay (ms): open after this delay if exit intent never fires (covers mobile)
+ *  - fallbackDelay (ms): opens this long after every page load / refresh (default 10s)
+ *  - exitIntent (default false): also open when the cursor leaves through the top of the window
  *
  * You can also open it from anywhere, e.g. a button:
  *   window.dispatchEvent(new Event("velcor:open-lead-popup"));
  */
 export default function LeadPopup({
-  exitIntent = true,
+  exitIntent = false,
   fallbackDelay = FALLBACK_DELAY_MS,
-  ignoreSnooze = false, // set true while testing so a past close doesn't hide it
 }) {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false); // drives the enter animation
@@ -159,17 +134,16 @@ export default function LeadPopup({
 
   const openPopup = useCallback((force = false) => {
     if (shownThisSession.current && !force) return;
-    if (!force && !ignoreSnooze && readSnooze()) return;
     shownThisSession.current = true;
     openedAt.current = Date.now();
     setOpen(true);
     requestAnimationFrame(() =>
       requestAnimationFrame(() => setVisible(true))
     );
-  }, [ignoreSnooze]);
+  }, []);
 
   useEffect(() => {
-    if (!ignoreSnooze && readSnooze()) return undefined;
+    if (HIDE_ON_PATHS.includes(pathname)) return undefined;
 
     const onMouseOut = (e) => {
       // Cursor left through the top edge of the viewport
@@ -184,7 +158,7 @@ export default function LeadPopup({
       document.removeEventListener("mouseout", onMouseOut);
       clearTimeout(timer);
     };
-  }, [exitIntent, fallbackDelay, ignoreSnooze, openPopup]);
+  }, [exitIntent, fallbackDelay, pathname, openPopup]);
 
   useEffect(() => {
     const manual = () => openPopup(true);
@@ -197,7 +171,6 @@ export default function LeadPopup({
 
   const closePopup = useCallback(() => {
     setVisible(false);
-    writeSnooze(SNOOZE_DAYS);
     setTimeout(() => setOpen(false), 250);
   }, []);
 
@@ -338,7 +311,6 @@ export default function LeadPopup({
         throw new Error(data.message || "Unable to send request.");
       }
 
-      writeSnooze(365); // already converted, don't ask again
       setDone(true);
     } catch (err) {
       setError(
