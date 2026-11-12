@@ -18,7 +18,6 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const ScheduleMeeting = lazy(() => import("./pages/ScheduleMeeting"));
-
 export default function App() {
   return (
     <>

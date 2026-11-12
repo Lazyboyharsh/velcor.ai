@@ -13,9 +13,9 @@ export default function Results() {
       <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-black/10 bg-black text-white shadow-2xl shadow-black/20">
         <div className="grid lg:grid-cols-[1fr_1.1fr]">
           <div className="p-8 md:p-12">
-            <p className="mb-5 w-fit rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white/60">
+            {/* <p className="mb-5 w-fit rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white/60">
               Sample Campaign Result
-            </p>
+            </p> */}
 
             <h2 className="text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
               From cold signals to
@@ -88,10 +88,10 @@ export default function Results() {
               </div>
             </div>
 
-            <p className="relative z-10 mt-5 text-xs text-white/35">
+            {/* <p className="relative z-10 mt-5 text-xs text-white/35">
               Demo metrics for design preview. Replace with real client campaign
               data before publishing.
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
