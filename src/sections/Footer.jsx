@@ -99,6 +99,7 @@ export default function Footer() {
               <li><Link to="/process" className="transition hover:text-black">Process</Link></li>
               <li><Link to="/infrastructure" className="transition hover:text-black">Infrastructure</Link></li>
               <li><Link to="/blog" className="transition hover:text-black">Blog</Link></li>
+               <li><Link to="/reviews" className="transition hover:text-black">Reviews</Link></li>
             </ul>
           </div>
 

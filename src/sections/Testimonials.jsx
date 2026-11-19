@@ -13,7 +13,7 @@ import { TestimonialsColumn } from "../components/ui/TestimonialsColumn";
 // ── Testimonial data ──────────────────────────────────────────────────────────
 const testimonials = [
   {
-    text: "Velcor didn't just run campaigns — they built a full pipeline system. We finally have consistency in our outreach.",
+    text: "Velcor didn't just run campaigns they built a full pipeline system. We finally have consistency in our outreach.",
     image: "https://randomuser.me/api/portraits/men/32.jpg",
     name: "James Anderson",
     role: "Founder, SaaS",

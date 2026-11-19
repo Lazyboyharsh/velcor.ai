@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import BookingPopup from "./components/BookingPopup";
 import LeadPopup from "./components/Leadpopup";
+import ReviewPage from "./pages/ReviewPage";
 const Home = lazy(() => import("./pages/Home"));
 const ServicesPage = lazy(() => import("./pages/ServicesPage"));
 const CaseStudiesPage = lazy(() => import("./pages/CaseStudiesPage"));
@@ -39,6 +40,7 @@ export default function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/reviews" element={<ReviewPage />} />
         </Routes>
       </Suspense>
       <LeadPopup />
